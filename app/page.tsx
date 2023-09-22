@@ -1,3 +1,9 @@
+import Arcs from '@/component/Arcs';
+
 export default function Home() {
-  return <main className="flex min-h-screen flex-col items-center justify-between p-24">One Pace</main>;
+  return (
+    <main className="relative w-full h-fit">
+      <Arcs />
+    </main>
+  );
 }

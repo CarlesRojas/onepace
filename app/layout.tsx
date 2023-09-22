@@ -1,6 +1,7 @@
-import '@/app/globals.css';
+import Header from '@/component/Header';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import '@/app/globals.css';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -37,7 +38,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
 
-      <body className={montserrat.className}>{children}</body>
+      <body
+        className={`${montserrat.className} relative bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50 dark:text-opacity-90 overflow-x-hidden h-fit min-h-screen`}
+      >
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
