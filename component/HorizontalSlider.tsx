@@ -147,7 +147,6 @@ const HorizontalSlider = ({
     cleanLastVisible.current = lastVisible >= 0 ? lastVisible : cleanLastVisible.current;
 
     const onViewChanged = (id: string) => {
-        console.log('hola');
         setViewedValues(getViewedValues(numberOfItems, arcIndex));
     };
 
