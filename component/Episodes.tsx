@@ -1,5 +1,7 @@
 import Episode from '@/component/Episode';
+import HorizontalSlider from '@/component/HorizontalSlider';
 import { type Arc as ArcType } from '@/data/schemas';
+import { cookies } from 'next/headers';
 
 interface Props {
     arc: ArcType;
@@ -7,21 +9,19 @@ interface Props {
 }
 
 export default function Episodes({ arc, index }: Props) {
+    const cookieStore = cookies();
     const { episodes } = arc;
-
-    // TODO const cookieName = `arc-${index}-viewed`;
-    // const cookieValue = Astro.cookies.get(cookieName)?.boolean() ?? false;
 
     return (
         <section className="relative flex flex-col w-full items-center gap-8 py-6 sm:py-12">
-            {/* <HorizontalSlider
-                client:load
+            <HorizontalSlider
                 id="episode"
                 numberOfItems={episodes.length}
                 arcIndex={parseInt(index)}
                 containerId="episodesScroll"
-                goToNextToViewEnabled={!cookieValue}
-            /> */}
+                goToNextToViewEnabled={!cookieStore.has(`arc-${index}-viewed`)}
+            />
+
             <h2 className="font-medium text-2xl sm:text-3xl">Episodes</h2>
 
             <div

@@ -1,4 +1,5 @@
 import Arc from '@/component/Arc';
+import HorizontalSlider from '@/component/HorizontalSlider';
 import arcsData from '@/data/data.json';
 import { ArcSchema, type Arc as ArcType } from '@/data/schemas';
 
@@ -7,13 +8,8 @@ export default function Arcs() {
 
     return (
         <section className="relative flex flex-col w-full h-3/5 items-center gap-2 sm:gap-4 py-4 sm:py-12">
-            {/* TODO <HorizontalSlider
-                client:load
-                id="arc"
-                numberOfItems={arcs.length}
-                containerId="arcsScroll"
-                goToNextToViewEnabled
-            /> */}
+            <HorizontalSlider id="arc" numberOfItems={arcs.length} containerId="arcsScroll" goToNextToViewEnabled />
+
             <h2 className="font-medium text-2xl sm:text-3xl">Arcs</h2>
 
             <div
