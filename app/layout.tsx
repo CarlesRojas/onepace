@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </head>
 
             <body
-                className={`${montserrat.className} relative bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50 dark:text-opacity-90 overflow-x-hidden overflow-y-auto h-fit min-h-screen`}
+                className={`${montserrat.className} relative bg-neutral-50 text-neutral-950 dark:bg-neutral-925 dark:text-neutral-50 dark:text-opacity-90 overflow-x-hidden overflow-y-auto h-fit min-h-screen`}
             >
                 <Header />
                 <EventProvider>{children}</EventProvider>

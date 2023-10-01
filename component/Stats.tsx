@@ -97,15 +97,18 @@ export default function Stats() {
             <div className="relative flex flex-col w-full h-full justify-start">
                 <div className="relative w-full flex justify-between pb-1">
                     <p className="text-blue-600 dark:text-blue-400">
-                        Watched: {getDurationString(totalSecondsWatched)}
+                        <span className="hidden sm:inline">Watched: </span>
+                        {getDurationString(totalSecondsWatched)}
                     </p>
-                    <p className="text-neutral-600 dark:text-neutral-500">
-                        Remaining: {getDurationString(totalSeconds - totalSecondsWatched)}
+
+                    <p className="text-neutral-600 dark:text-neutral-500 inline">
+                        <span className="hidden sm:inline">Remaining: </span>
+                        {getDurationString(totalSeconds - totalSecondsWatched)}
                     </p>
                 </div>
 
                 <progress
-                    className="w-full h-8 progress-red-500 border border-neutral-400 dark:border-neutral-600 [&::-webkit-progress-bar]:overflow-hidden [&::-webkit-progress-bar]:bg-neutral-200 dark:[&::-webkit-progress-bar]:bg-neutral-800 [&::-webkit-progress-value]:bg-blue-400 [&::-webkit-progress-value]:transition-all"
+                    className="w-full h-8 progress-red-500 border border-neutral-400 dark:border-neutral-600 rounded-full [&::-webkit-progress-bar]:overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-neutral-200 dark:[&::-webkit-progress-bar]:bg-neutral-800 [&::-webkit-progress-value]:bg-blue-400 [&::-webkit-progress-value]:transition-all"
                     value={totalSecondsWatched}
                     max={totalSeconds}
                 />

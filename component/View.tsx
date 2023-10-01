@@ -34,7 +34,7 @@ const View = ({ id, defaultValue, borderReduction, overrideId }: Props) => {
             } ${viewed ? '!bg-opacity-50 dark:!bg-opacity-70' : '!bg-opacity-0'}`}
         >
             <button
-                className="absolute -right-2 -top-2 xl:-right-3 xl:-top-3 z-30 pointer-events-auto w-12 h-12 md:w-14 md:h-14 p-3 md:p-4 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm"
+                className="absolute -right-2 -top-2 xl:-right-3 xl:-top-3 z-30 pointer-events-auto w-12 h-12 md:w-14 md:h-14 p-3 md:p-4 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm"
                 onClick={() => setViewed(!viewed)}
                 type="button"
                 aria-label="Toggle viewed"
