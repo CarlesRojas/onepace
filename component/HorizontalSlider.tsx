@@ -2,7 +2,7 @@
 
 import { Event, useEvents } from '@/component/Events';
 import { hasCookie } from 'cookies-next';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { RiArrowLeftLine, RiArrowRightLine, RiEyeFill } from 'react-icons/ri';
 
 export interface HorizontalSliderProps {
@@ -40,7 +40,7 @@ const HorizontalSlider = ({
     const [shown, setShown] = useState<boolean[]>([true]);
 
     const [viewedValues, setViewedValues] = useState(Array.from({ length: numberOfItems }, () => false));
-    useEffect(() => setViewedValues(getViewedValues(numberOfItems, arcIndex)), []);
+    useEffect(() => setViewedValues(getViewedValues(numberOfItems, arcIndex)), [arcIndex, numberOfItems]);
 
     const onIntersectionChange = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
@@ -72,7 +72,7 @@ const HorizontalSlider = ({
 
         setShown(items.map((_, i) => i === 0));
         itemDivs.current = items;
-    }, []);
+    }, [containerId, id]);
 
     const getContainerElement = () => {
         const container = document.getElementById(containerId);
@@ -146,9 +146,12 @@ const HorizontalSlider = ({
     cleanFirstVisible.current = firstVisible >= 0 ? firstVisible : cleanFirstVisible.current;
     cleanLastVisible.current = lastVisible >= 0 ? lastVisible : cleanLastVisible.current;
 
-    const onViewChanged = (id: string) => {
-        setViewedValues(getViewedValues(numberOfItems, arcIndex));
-    };
+    const onViewChanged = useCallback(
+        (id: string) => {
+            setViewedValues(getViewedValues(numberOfItems, arcIndex));
+        },
+        [arcIndex, numberOfItems]
+    );
 
     useEffect(() => {
         sub(Event.ON_VIEW, onViewChanged);
@@ -156,7 +159,7 @@ const HorizontalSlider = ({
         return () => {
             unsub(Event.ON_VIEW, onViewChanged);
         };
-    }, []);
+    }, [sub, onViewChanged, unsub]);
 
     return (
         <div className="w-full h-fit px-4 sm:px-8 flex gap-1 sm:gap-2 justify-between absolute z-10 top-3 sm:top-10">
