@@ -76,8 +76,8 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                     <Image
                         src={`/asset/image/${images[0].src.replace('.webp', '.jpg')}`}
                         alt={episode.invariant_title}
-                        width={854}
-                        height={480}
+                        width={400}
+                        height={225}
                         className="h-full w-full object-cover rounded-xl select-none"
                     />
                 ) : (

@@ -25,8 +25,8 @@ export default function Arc({ arc, index }: Props) {
                 <Image
                     src={`/asset/image/${images[0].src}`}
                     alt={invariant_title}
-                    width={512}
-                    height={768}
+                    width={400}
+                    height={600}
                     className="h-full w-full object-cover select-none"
                     priority={index < 6}
                 />
