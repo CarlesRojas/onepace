@@ -27,6 +27,9 @@ export default function Stats() {
     const [totalSecondsWatched, setTotalSecondsWatched] = useState(0);
 
     useEffect(() => {
+        arcStartPositionInSeconds.current = [];
+        arcFinished.current = [];
+
         setTotalSeconds(
             arcs.reduce((acc, arc) => {
                 arcStartPositionInSeconds.current.push(acc);
@@ -68,13 +71,29 @@ export default function Stats() {
         };
     }, [sub, unsub]);
 
+    const goToArc = (index: number) => {
+        const container = document.getElementById('arcsScroll');
+        if (!container || index < 0 || index >= arcs.length) return;
+
+        const element = document.getElementById(`arc-${index}`);
+        if (!element) return;
+
+        const bounding = element.getBoundingClientRect();
+        container.scrollTo({
+            behavior: 'smooth',
+            left: container.scrollLeft + bounding.left
+        });
+    };
+
     return (
         <section className="relative flex flex-col w-full items-center gap-8 sm:gap-12 p-4 sm:p-12">
             <h2 className="font-medium text-2xl sm:text-3xl">Your progress</h2>
 
             <div className="relative flex flex-col w-full h-full justify-start">
                 <div className="relative w-full flex justify-between pb-1">
-                    <p className="text-blue-600 dark:text-blue-400">{getDurationString(totalSecondsWatched)}</p>
+                    <p className="text-blue-600 dark:text-blue-400">
+                        Watched: {getDurationString(totalSecondsWatched)}
+                    </p>
                     <p className="text-neutral-600 dark:text-neutral-500">
                         Remaining: {getDurationString(totalSeconds - totalSecondsWatched)}
                     </p>
@@ -108,11 +127,12 @@ export default function Stats() {
                                     arcFinished.current[i]
                                         ? 'bg-blue-400 border-blue-500 pointer:hover:bg-blue-500 pointer:focus-visible:bg-blue-500 active:bg-blue-500'
                                         : 'bg-neutral-300 dark:bg-neutral-700 border-neutral-400 dark:border-neutral-600 pointer:hover:bg-neutral-400 pointer:focus-visible:bg-neutral-400 active:bg-neutral-400'
-                                } rounded-full border`}
+                                } rounded-full border transition-colors`}
                                 style={{
                                     left: `${(arcStartPositionInSeconds.current[i] / totalSeconds) * 100}%`,
                                     top: TOP[i % 4]
                                 }}
+                                onClick={() => goToArc(i)}
                             />
                         </Fragment>
                     ))}
