@@ -110,6 +110,7 @@ export default function Header() {
                     'flex md:hidden items-center justify-center w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
                 type="button"
+                aria-label={isOpen ? 'Open Menu' : 'Close Menu'}
                 onClick={() => setIsOpen((prev) => !prev)}
             >
                 {isOpen ? (

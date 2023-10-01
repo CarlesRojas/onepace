@@ -66,8 +66,8 @@ export default function ArcInfo({ arc, index }: Props) {
         <section className="relative flex flex-col w-full max-w-7xl m-auto items-center gap-8 px-4 sm:px-8 py-6 sm:py-12 scroll-mt-28 sm:scroll-mt-12">
             <div className="relative w-full h-fit flex flex-col md:flex-row items-center justify-center sm:items-start gap-8">
                 <div
-                    className="relative flex items-center justify-center h-[27rem] w-[18rem] min-w-[18rem] sm:h-[33rem] sm:w-[22rem] sm:min-w-[22rem] xl:h-[36rem] xl:w-[24rem] xl:min-w-[24rem] rounded-lg shadow-lg"
-                    id="arc-link"
+                    className="arc-link relative flex items-center justify-center h-[27rem] w-[18rem] min-w-[18rem] sm:h-[33rem] sm:w-[22rem] sm:min-w-[22rem] xl:h-[36rem] xl:w-[24rem] xl:min-w-[24rem] rounded-lg shadow-lg"
+                    id={`arc-link-${index}`}
                     style={{ borderColor: color ?? 'transparent' }}
                 >
                     <Image

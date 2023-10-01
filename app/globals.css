@@ -50,14 +50,14 @@ a {
 
 /* ARC */
 
-#arc-link {
+.arc-link {
     border-color: transparent;
 }
 
-#arc-link:hover {
+.arc-link:hover {
     border-color: var(--arc-color);
 }
 
-#arc-link:focus {
+.arc-link:focus {
     border-color: var(--arc-color);
 }

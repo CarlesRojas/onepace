@@ -18,8 +18,8 @@ export default function Arc({ arc, index }: Props) {
         <div className="relative h-full aspect-[2/3] snap-start" id={`arc-${index}`}>
             <a
                 href={`arc/${index}`}
-                className="relative flex items-center justify-center h-full w-full rounded-xl cursor-pointer overflow-hidden outline-none border-[3px]"
-                id="arc-link"
+                className="arc-link relative flex items-center justify-center h-full w-full rounded-xl cursor-pointer overflow-hidden outline-none border-[3px]"
+                id={`arc-link-${index}`}
                 style={{ '--arc-color': color ?? 'transparent' } as CSSProperties}
             >
                 <Image
@@ -28,6 +28,7 @@ export default function Arc({ arc, index }: Props) {
                     width={512}
                     height={768}
                     className="h-full w-full object-cover select-none"
+                    priority={index < 6}
                 />
 
                 <div
