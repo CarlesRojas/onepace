@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { RiArrowLeftLine, RiCloseLine, RiDiscordFill, RiMenuLine, RiMusic2Line } from 'react-icons/ri';
-import SVG from 'react-inlinesvg';
 
 export default function Header() {
     const pathname = usePathname();
@@ -53,10 +52,16 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'Arlong Park Forums'}
                 className={
-                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'group w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
-                <SVG src="/asset/icon/ArlongPark.svg" className="w-full h-full pointer-events-none" />
+                <Image
+                    src="/asset/icon/ArlongPark.svg"
+                    alt="Arlong Park Forums icon"
+                    className="dark:invert w-full h-full pointer-events-none group-hover:filter-blue-400 group-focus-visible:filter-blue-400"
+                    width={64}
+                    height={64}
+                />
             </a>
 
             <a

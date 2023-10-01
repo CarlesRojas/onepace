@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .filter-blue-400 {
+        filter: invert(51%) sepia(88%) saturate(556%) hue-rotate(187deg) brightness(104%) contrast(96%);
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
