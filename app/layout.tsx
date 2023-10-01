@@ -1,4 +1,5 @@
 import '@/app/globals.css';
+import { EventProvider } from '@/component/Events';
 import Header from '@/component/Header';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
@@ -42,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 className={`${montserrat.className} relative bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50 dark:text-opacity-90 overflow-x-hidden overflow-y-auto h-fit min-h-screen`}
             >
                 <Header />
-                {children}
+                <EventProvider>{children}</EventProvider>
             </body>
         </html>
     );

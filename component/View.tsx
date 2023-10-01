@@ -1,7 +1,8 @@
 'use client';
 
+import { Event, useEvents } from '@/component/Events';
 import { deleteCookie, hasCookie, setCookie } from 'cookies-next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 
 interface Props {
@@ -12,27 +13,19 @@ interface Props {
 }
 
 const View = ({ id, defaultValue, borderReduction, overrideId }: Props) => {
-    const [viewed, setViewed] = useState(defaultValue);
+    const [viewed, setViewedInternal] = useState(defaultValue);
+    const { emit } = useEvents<string>();
 
-    const setViewedCookie = () => {
-        setCookie(`${id}-viewed`, 'true', { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) });
-    };
-
-    useEffect(() => {
-        const isOverrideViewed = hasCookie(`${overrideId}-viewed`);
-        const isViewed = hasCookie(`${id}-viewed`);
-
-        if (isViewed) setViewedCookie();
-        setViewed(isOverrideViewed || isViewed);
-    }, [id]);
-
-    useEffect(() => {
+    const setViewed = (newValue: boolean) => {
         const isOverrideViewed = hasCookie(`${overrideId}-viewed`);
         if (isOverrideViewed) return;
 
-        if (viewed) setViewedCookie();
+        if (newValue) setCookie(`${id}-viewed`, 'true', { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) });
         else deleteCookie(`${id}-viewed`);
-    }, [id, viewed]);
+
+        setViewedInternal(newValue);
+        emit(Event.ON_VIEW, id);
+    };
 
     return (
         <div
@@ -42,10 +35,7 @@ const View = ({ id, defaultValue, borderReduction, overrideId }: Props) => {
         >
             <button
                 className="absolute -right-2 -top-2 xl:-right-3 xl:-top-3 z-40 pointer-events-auto w-12 h-12 md:w-14 md:h-14 p-3 md:p-4 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm"
-                onClick={() => {
-                    const isOverrideViewed = hasCookie(`${overrideId}-viewed`);
-                    !isOverrideViewed && setViewed((prev) => !prev);
-                }}
+                onClick={() => setViewed(!viewed)}
                 type="button"
                 aria-label="Toggle viewed"
             >

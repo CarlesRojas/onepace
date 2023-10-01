@@ -1,5 +1,6 @@
 'use client';
 
+import { Event, useEvents } from '@/component/Events';
 import { hasCookie } from 'cookies-next';
 import { useEffect, useRef, useState } from 'react';
 import { RiArrowLeftLine, RiArrowRightLine, RiEyeFill } from 'react-icons/ri';
@@ -31,6 +32,8 @@ const HorizontalSlider = ({
     numberOfItems,
     arcIndex
 }: HorizontalSliderProps) => {
+    const { sub, unsub } = useEvents<string>();
+
     const itemDivs = useRef<HTMLDivElement[]>([]);
     const observer = useRef<IntersectionObserver | null>(null);
 
@@ -142,6 +145,19 @@ const HorizontalSlider = ({
 
     cleanFirstVisible.current = firstVisible >= 0 ? firstVisible : cleanFirstVisible.current;
     cleanLastVisible.current = lastVisible >= 0 ? lastVisible : cleanLastVisible.current;
+
+    const onViewChanged = (id: string) => {
+        console.log('hola');
+        setViewedValues(getViewedValues(numberOfItems, arcIndex));
+    };
+
+    useEffect(() => {
+        sub(Event.ON_VIEW, onViewChanged);
+
+        return () => {
+            unsub(Event.ON_VIEW, onViewChanged);
+        };
+    }, []);
 
     return (
         <div className="w-full h-fit px-4 sm:px-8 flex gap-1 sm:gap-2 justify-between absolute z-10 top-3 sm:top-10">
