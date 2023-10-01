@@ -23,7 +23,8 @@ export default function Episode({ episode, index, arcIndex }: Props) {
         anime_episodes,
         resolution,
         released_at,
-        downloads
+        downloads,
+        id
     } = episode;
 
     const translation = translations.find((t) => t.language_code === 'en') ?? {
@@ -102,8 +103,9 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                 <p className="opacity-70 max-w-3xl">{description}</p>
 
                 <div className="flex flex-wrap gap-3">
-                    {downloads.map(({ type, uri }) => (
+                    {downloads.map(({ type, uri, id }) => (
                         <a
+                            key={id}
                             href={uri}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -115,8 +117,8 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                 </div>
 
                 <div className="grid grid-cols-2 w-fit gap-x-12 gap-y-4">
-                    {info.map(({ label, value }) => (
-                        <div className="flex flex-col ">
+                    {info.map(({ label, value }, i) => (
+                        <div className="flex flex-col" key={`${arcIndex}_${id}_${label}_${value}_${i}`}>
                             <p className="text-sm opacity-60">{label}</p>
                             <p className="font-semibold">{value}</p>
                         </div>

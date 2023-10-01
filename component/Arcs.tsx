@@ -17,7 +17,7 @@ export default function Arcs() {
                 id="arcsScroll"
             >
                 <div className="relatve min-w-full w-fit h-full flex flex-row gap-6 p-4">
-                    {arcs.map((arc, i) => arc.images.length > 0 && <Arc arc={arc} index={i} />)}
+                    {arcs.map((arc, i) => arc.images.length > 0 && <Arc key={arc.id} arc={arc} index={i} />)}
                 </div>
             </div>
         </section>

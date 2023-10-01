@@ -30,7 +30,7 @@ export default function Episodes({ arc, index }: Props) {
             >
                 <div className="relatve w-fit min-w-full h-fit flex flex-row justify-center gap-6 sm:gap-12 py-4 px-4 sm:px-8 pr-32 sm:pr-unset">
                     {episodes.map((episode, i) => (
-                        <Episode episode={episode} arcIndex={parseInt(index)} index={i} />
+                        <Episode key={episode.id} episode={episode} arcIndex={parseInt(index)} index={i} />
                     ))}
                 </div>
             </div>
