@@ -163,7 +163,7 @@ const HorizontalSlider = ({
             <button
                 className={`${
                     scrolledToTheStart ? 'opacity-0 pointer-none select-none' : ''
-                } group p-3 sm:p-4 w-14 h-12 sm:h-14 rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                } group p-3 sm:p-4 w-14 h-12 sm:h-14 rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                 onClick={() => goPrev()}
                 type="button"
                 disabled={scrolledToTheStart}
@@ -187,7 +187,7 @@ const HorizontalSlider = ({
                                 firstNotWatched >= cleanFirstVisible.current)
                                 ? 'opacity-0 pointer-none select-none'
                                 : ''
-                        } group p-3 sm:p-4 w-fit h-12 sm:h-14 rounded-full flex items-center justify-center gap-2 outline-none focus:scale-110 hover:scale-110 active:scale-105 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                        } group p-3 sm:p-4 w-fit h-12 sm:h-14 rounded-full flex items-center justify-center gap-2 outline-none focus:scale-110 hover:scale-110 active:scale-105 border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                         onClick={() => goFirstNotWatched()}
                         type="button"
                         disabled={firstNotWatchedVisible}
@@ -219,7 +219,7 @@ const HorizontalSlider = ({
             <button
                 className={`${
                     scrolledToTheEnd ? 'opacity-0 pointer-none select-none' : ''
-                } group p-3 sm:p-4 w-14 h-12 sm:h-14 rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                } group p-3 sm:p-4 w-14 h-12 sm:h-14 rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                 onClick={() => goNext()}
                 type="button"
                 disabled={scrolledToTheEnd}

@@ -78,11 +78,11 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                         alt={episode.invariant_title}
                         width={400}
                         height={225}
-                        className="h-full w-full object-cover rounded-xl select-none"
+                        className="animate-skeketon dark:animate-skeketonDark h-full w-full object-cover rounded-xl select-none"
                         sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px"
                     />
                 ) : (
-                    <div className="relative flex items-center justify-center w-full h-full bg-white dark:bg-neutral-950 !bg-opacity-80 rounded-xl">
+                    <div className="relative flex items-center justify-center w-full h-full bg-white dark:bg-neutral-950 !bg-opacity-70 rounded-xl">
                         <p className="font-semibold text-lg">No preview</p>
                     </div>
                 )}
@@ -99,7 +99,7 @@ export default function Episode({ episode, index, arcIndex }: Props) {
 
             <div className="relative flex w-full sm:w-fit justify-center sm:justify-start flex-col gap-4">
                 <h1 className="font-semibold text-lg sm:text-xl">{title}</h1>
-                <p className="opacity-80 max-w-3xl">{description}</p>
+                <p className="opacity-70 max-w-3xl">{description}</p>
 
                 <div className="flex flex-wrap gap-3">
                     {downloads.map(({ type, uri }) => (
@@ -117,7 +117,7 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                 <div className="grid grid-cols-2 w-fit gap-x-12 gap-y-4">
                     {info.map(({ label, value }) => (
                         <div className="flex flex-col ">
-                            <p className="text-sm opacity-80">{label}</p>
+                            <p className="text-sm opacity-60">{label}</p>
                             <p className="font-semibold">{value}</p>
                         </div>
                     ))}

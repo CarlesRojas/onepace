@@ -27,7 +27,7 @@ export default function Arc({ arc, index }: Props) {
                     alt={invariant_title}
                     width={400}
                     height={600}
-                    className="h-full w-full object-cover select-none"
+                    className="animate-skeketon dark:animate-skeketonDark h-full w-full object-cover select-none"
                     sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px"
                     priority={index < 6}
                 />

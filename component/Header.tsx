@@ -40,7 +40,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'One Pace Discord'}
                 className={
-                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'w-14 h-14 p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
                 <RiDiscordFill className="w-full h-full pointer-events-none" />
@@ -52,7 +52,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'Arlong Park Forums'}
                 className={
-                    'group w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'group w-14 h-14 p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
                 <Image
@@ -70,7 +70,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'One Piece Tracklist'}
                 className={
-                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'w-14 h-14 p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
                 <RiMusic2Line className="w-full h-full pointer-events-none" />
@@ -79,7 +79,7 @@ export default function Header() {
     );
 
     return (
-        <header className="sticky z-50 top-0 left-0 w-full h-24 flex gap-2 sm:gap-4 justify-between items-center py-4 px-4 md:px-8 bg-neutral-50 dark:bg-neutral-900 border-b border-b-neutral-200 dark:border-b-neutral-800 shadow-md">
+        <header className="sticky z-50 top-0 left-0 w-full h-24 flex gap-2 sm:gap-4 justify-between items-center py-4 px-4 md:px-8 bg-neutral-50 dark:bg-neutral-950 border-b border-b-neutral-200 dark:border-b-neutral-900">
             <a
                 href="/"
                 className={`relative w-fit h-full cursor-pointer transition-transform outline-none pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105`}
@@ -96,7 +96,7 @@ export default function Header() {
             <a
                 className={`${
                     pathname === '/' ? 'hidden' : 'flex'
-                } group gap-2 items-center w-fit h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                } group gap-2 items-center w-14 h-14 p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                 href="/"
                 aria-label="Back"
             >
@@ -107,7 +107,7 @@ export default function Header() {
 
             <button
                 className={
-                    'flex md:hidden items-center justify-center w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'flex md:hidden items-center justify-center w-14 h-14 p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-900 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
                 type="button"
                 aria-label={isOpen ? 'Open Menu' : 'Close Menu'}

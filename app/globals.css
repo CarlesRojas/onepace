@@ -22,7 +22,14 @@ body {
     font-family: 'Montserrat', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color-scheme: dark;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    html,
+    body {
+        color-scheme: dark;
+    }
 }
 
 .smoothscroll {
@@ -44,10 +51,6 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
-.dark {
-    color-scheme: dark;
-}
-
 /* ARC */
 
 .arc-link {
@@ -60,4 +63,15 @@ a {
 
 .arc-link:focus {
     border-color: var(--arc-color);
+}
+
+#arcsScroll,
+#episodesScroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#arcsScroll::-webkit-scrollbar,
+#episodesScroll::-webkit-scrollbar {
+    display: none;
 }

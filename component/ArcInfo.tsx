@@ -76,14 +76,14 @@ export default function ArcInfo({ arc, index }: Props) {
                         width={400}
                         height={600}
                         sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px"
-                        className="h-full w-full object-cover rounded-lg select-none"
+                        className="animate-skeketon dark:animate-skeketonDark h-full w-full object-cover rounded-lg select-none"
                         priority
                     />
                 </div>
 
                 <div className="relative flex w-full sm:w-fit justify-center sm:justify-start flex-col gap-6">
                     <h1 className="font-semibold text-xl sm:text-3xl">{title}</h1>
-                    <p className="opacity-80 sm:text-lg max-w-3xl">{description}</p>
+                    <p className="opacity-70 sm:text-lg max-w-3xl">{description}</p>
 
                     <div className="flex flex-wrap gap-3">
                         {downloads.map(({ type, uri }) => (
@@ -91,6 +91,7 @@ export default function ArcInfo({ arc, index }: Props) {
                                 href={uri}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label={`Download ${DOWNLOAD_TYPE_NAME[type]}`}
                                 className="gap-3 flex items-center justify-center px-5 py-2 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
                             >
                                 {DOWNLOAD_TYPE_ICON[type]}
@@ -102,7 +103,7 @@ export default function ArcInfo({ arc, index }: Props) {
                     <div className="grid grid-cols-2 xl:grid-cols-3 w-fit gap-x-12 gap-y-4">
                         {info.map(({ label, value }) => (
                             <div className="flex flex-col ">
-                                <p className="text-sm opacity-80">{label}</p>
+                                <p className="text-sm opacity-60">{label}</p>
                                 <p className="font-semibold">{value}</p>
                             </div>
                         ))}
@@ -110,7 +111,7 @@ export default function ArcInfo({ arc, index }: Props) {
 
                     <div className="flex flex-col">
                         <p className="font-semibold text-sky-600">How to watch:</p>
-                        <p className="opacity-80">{HOW_TO_WATCH[index]}</p>
+                        <p className="opacity-70">{HOW_TO_WATCH[index]}</p>
                     </div>
                 </div>
             </div>
