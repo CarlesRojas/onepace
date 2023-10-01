@@ -75,7 +75,9 @@ export default function ArcInfo({ arc, index }: Props) {
                         alt={title}
                         width={400}
                         height={600}
+                        sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px"
                         className="h-full w-full object-cover rounded-lg select-none"
+                        priority
                     />
                 </div>
 

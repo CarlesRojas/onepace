@@ -79,6 +79,7 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                         width={400}
                         height={225}
                         className="h-full w-full object-cover rounded-xl select-none"
+                        sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px"
                     />
                 ) : (
                     <div className="relative flex items-center justify-center w-full h-full bg-white dark:bg-neutral-950 !bg-opacity-80 rounded-xl">
