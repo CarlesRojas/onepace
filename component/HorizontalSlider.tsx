@@ -171,6 +171,9 @@ const HorizontalSlider = ({
                 type="button"
                 disabled={scrolledToTheStart}
                 aria-label="Previous"
+                data-tooltip-id="tooltip"
+                data-tooltip-content={'Show previous'}
+                data-tooltip-delay-show={400}
             >
                 <RiArrowLeftLine className="w-full h-full group-hover:text-blue-400 group-focus:text-blue-400 select-none" />
             </button>
@@ -194,7 +197,10 @@ const HorizontalSlider = ({
                         onClick={() => goFirstNotWatched()}
                         type="button"
                         disabled={firstNotWatchedVisible}
-                        aria-label="Next"
+                        aria-label="Go to next not watched"
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content={'Show next to watch'}
+                        data-tooltip-delay-show={400}
                     >
                         <RiArrowLeftLine
                             className={`w-full h-full group-hover:text-blue-400 group-focus:text-blue-400 select-none ${
@@ -227,6 +233,9 @@ const HorizontalSlider = ({
                 type="button"
                 disabled={scrolledToTheEnd}
                 aria-label="Next"
+                data-tooltip-id="tooltip"
+                data-tooltip-content={'Show next'}
+                data-tooltip-delay-show={400}
             >
                 <RiArrowRightLine className="w-full h-full group-hover:text-blue-400 group-focus:text-blue-400 select-none" />
             </button>

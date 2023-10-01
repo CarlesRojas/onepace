@@ -5,3 +5,4 @@
 -   [ ] Add tooltips
 -   [ ] Mark previous episodes as watched
 -   [ ] Dark mode background lighter
+-   [ ] Improve duration parsing

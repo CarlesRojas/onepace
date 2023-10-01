@@ -1,4 +1,4 @@
-import { DOWNLOAD_TYPE_NAME, HOW_TO_WATCH, LANGUAGE_NAME } from '@/data/constants';
+import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME, HOW_TO_WATCH, LANGUAGE_NAME } from '@/data/constants';
 import { Arc, DownloadType } from '@/data/schemas';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
@@ -95,6 +95,9 @@ export default function ArcInfo({ arc, index }: Props) {
                                 rel="noopener noreferrer"
                                 aria-label={`Download ${DOWNLOAD_TYPE_NAME[type]}`}
                                 className="gap-3 flex items-center justify-center px-5 py-2 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
+                                data-tooltip-id="tooltip"
+                                data-tooltip-content={DOWNLOAD_TOOLTIP[type]}
+                                data-tooltip-delay-show={400}
                             >
                                 {DOWNLOAD_TYPE_ICON[type]}
                                 <p className="uppercase font-semibold">{DOWNLOAD_TYPE_NAME[type]}</p>

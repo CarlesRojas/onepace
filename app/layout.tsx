@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import { EventProvider } from '@/component/Events';
 import Header from '@/component/Header';
+import { default as TooltipArea } from '@/component/TooltipArea';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             >
                 <Header />
                 <EventProvider>{children}</EventProvider>
+                <TooltipArea />
             </body>
         </html>
     );

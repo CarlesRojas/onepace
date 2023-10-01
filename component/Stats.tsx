@@ -5,7 +5,7 @@ import arcsData from '@/data/data.json';
 import { Arc, ArcSchema } from '@/data/schemas';
 import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import { hasCookie } from 'cookies-next';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 
 const TOP: Record<number, string> = {
     0: '0.5rem',
@@ -22,20 +22,25 @@ export default function Stats() {
     const arcStartPositionInSeconds = useRef<number[]>([]);
     const arcFinished = useRef<boolean[]>([]);
 
+    const getTotalSeconds = useCallback(() => {
+        arcStartPositionInSeconds.current = [];
+
+        const totalSeconds = arcs.reduce((acc, arc) => {
+            arcStartPositionInSeconds.current.push(acc);
+            return acc + getDurationInSeconds(arc.duration);
+        }, 0);
+
+        return totalSeconds;
+    }, [arcs]);
+
     const [toggle, setToggle] = useState(0);
-    const [totalSeconds, setTotalSeconds] = useState(0);
+    const [totalSeconds, setTotalSeconds] = useState(getTotalSeconds());
     const [totalSecondsWatched, setTotalSecondsWatched] = useState(0);
 
     useEffect(() => {
-        arcStartPositionInSeconds.current = [];
         arcFinished.current = [];
 
-        setTotalSeconds(
-            arcs.reduce((acc, arc) => {
-                arcStartPositionInSeconds.current.push(acc);
-                return acc + getDurationInSeconds(arc.duration);
-            }, 0)
-        );
+        setTotalSeconds(getTotalSeconds());
 
         setTotalSecondsWatched(
             arcs.reduce((acc, arc, i) => {
@@ -57,7 +62,7 @@ export default function Stats() {
                 return acc + totalSecondsEpisodesWatched;
             }, 0)
         );
-    }, [arcs, toggle]);
+    }, [arcs, getTotalSeconds, toggle]);
 
     const onViewChanged = (id: string) => {
         setToggle((prev) => prev + 1);
@@ -106,7 +111,7 @@ export default function Stats() {
                 />
 
                 <div className={`relative w-full h-[6.25rem]  ${totalSeconds > 0 ? 'hidden lg:flex' : 'hidden'}`}>
-                    {arcs.map(({ id }, i) => (
+                    {arcs.map(({ id, invariant_title }, i) => (
                         <Fragment key={id}>
                             <div
                                 className={`absolute w-[1px] top-0 -translate-x-1/2 rounded-full pointer-events-none ${
@@ -133,6 +138,9 @@ export default function Stats() {
                                     top: TOP[i % 4]
                                 }}
                                 onClick={() => goToArc(i)}
+                                data-tooltip-id="tooltip"
+                                data-tooltip-content={`Show ${invariant_title} Arc`}
+                                data-tooltip-delay-show={400}
                             />
                         </Fragment>
                     ))}
