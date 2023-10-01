@@ -1,7 +1,8 @@
 import Arcs from '@/component/Arcs';
+import NextToWatch from '@/component/NextToWatch';
 import Stats from '@/component/Stats';
 import arcsData from '@/data/data.json';
-import { Arc, ArcSchema } from '@/data/schemas';
+import { Arc, ArcSchema, Episode } from '@/data/schemas';
 import { getDurationInSeconds } from '@/data/utils';
 import { cookies } from 'next/headers';
 
@@ -11,6 +12,8 @@ export default function Home() {
 
     const arcStartPositionInSeconds: number[] = [];
     const arcFinished: boolean[] = [];
+    let nextArcToWatchIndex: Arc | null = null;
+    let nextEpisodeToWatchIndex: Episode | null = null;
 
     const totalSeconds = arcs.reduce((acc, arc) => {
         arcStartPositionInSeconds.push(acc);
@@ -24,26 +27,41 @@ export default function Home() {
             return acc + getDurationInSeconds(arc.duration);
         }
 
+        let firstEpisodeNotWatched: Episode | null = null;
         let allEpisodesWatched = true;
         const totalSecondsEpisodesWatched = arc.episodes.reduce((acc_e, episode, j) => {
             const episodeWatched = cookieStore.has(`arc-${i}-ep-${j}-viewed`);
-            if (!episodeWatched) allEpisodesWatched = false;
+            if (!episodeWatched) {
+                if (!firstEpisodeNotWatched) firstEpisodeNotWatched = episode;
+                allEpisodesWatched = false;
+            }
             return episodeWatched ? acc_e + getDurationInSeconds(episode.duration) : acc_e;
         }, 0);
 
-        arcFinished.push(arcWatched || allEpisodesWatched);
+        arcFinished.push(allEpisodesWatched);
+
+        if (!nextArcToWatchIndex && !allEpisodesWatched) {
+            nextArcToWatchIndex = arc;
+            if (!nextEpisodeToWatchIndex && firstEpisodeNotWatched) nextEpisodeToWatchIndex = firstEpisodeNotWatched;
+        }
 
         return acc + totalSecondsEpisodesWatched;
     }, 0);
 
     return (
-        <main className="relative w-full h-[calc(100vh-6rem)] flex flex-col items-center">
+        <main className="relative w-full h-[calc(100vh-6rem)] max-h-[calc(100vh-6rem)] flex flex-col items-center">
             <Arcs />
+
             <Stats
                 defaultArcStartPositionInSeconds={arcStartPositionInSeconds}
                 defaultArcFinished={arcFinished}
                 defaultTotalSeconds={totalSeconds}
                 defaultTotalSecondsWatched={totalSecondsWatched}
+            />
+
+            <NextToWatch
+                defaultNextArcToWatch={nextArcToWatchIndex}
+                defaultNextEpisodeToWatch={nextEpisodeToWatchIndex}
             />
         </main>
     );

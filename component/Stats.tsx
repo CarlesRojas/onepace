@@ -103,10 +103,10 @@ export default function Stats({
     };
 
     return (
-        <section className="relative flex flex-col w-full items-center gap-2 sm:gap-4 py-4 sm:py-8 px-4 sm:px-8">
+        <section className="relative flex flex-col w-full h-1/5 min-h-[20%] items-center justify-center gap-2 sm:gap-4 px-4 sm:px-8">
             <h2 className="font-medium text-xl sm:text-3xl">Your progress</h2>
 
-            <div className="relative flex flex-col w-full h-full justify-start">
+            <div className="relative flex flex-col w-full h-fit justify-start">
                 <div className="relative w-full flex justify-between pb-1">
                     <p className="text-blue-600 dark:text-blue-400">
                         <span className="hidden sm:inline">Watched: </span>

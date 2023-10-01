@@ -1,5 +1,5 @@
 import View from '@/component/View';
-import { DOWNLOAD_TOOLTIP, LANGUAGE_NAME } from '@/data/constants';
+import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME, LANGUAGE_NAME } from '@/data/constants';
 import { DownloadType, Episode } from '@/data/schemas';
 import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import { cookies } from 'next/headers';
@@ -63,9 +63,9 @@ export default function Episode({ episode, index, arcIndex }: Props) {
         });
 
     const DOWNLOAD_TYPE_ICON: Record<DownloadType, JSX.Element> = {
-        [DownloadType.MAGNET]: <FaMagnet className="w-4 h-4" />,
-        [DownloadType.TORRENT]: <FaDownload className="w-4 h-4" />,
-        [DownloadType.TELEGRAM]: <FaTelegramPlane className="w-4 h-4 scale-[1.4]" />
+        [DownloadType.MAGNET]: <FaMagnet />,
+        [DownloadType.TORRENT]: <FaDownload />,
+        [DownloadType.TELEGRAM]: <FaTelegramPlane className="scale-[1.4]" />
     };
 
     return (
@@ -110,7 +110,8 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                             href={uri}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="gap-3 flex items-center justify-center p-4 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
+                            className="w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-[0.9rem] gap-3 flex items-center justify-center cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
+                            aria-label={`Download ${DOWNLOAD_TYPE_NAME[type]}`}
                             data-tooltip-id="tooltip"
                             data-tooltip-content={DOWNLOAD_TOOLTIP[type]}
                             data-tooltip-delay-show={400}

@@ -2,5 +2,5 @@
 
 ### TODO
 
--   [ ] Show next arc and next episode to watch
--   [ ] Mark previous episodes as watched
+-   [ ] Better cards in next episode and arc
+-   [ ] Mark next episode and arc as watched
