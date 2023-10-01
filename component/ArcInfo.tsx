@@ -82,7 +82,7 @@ export default function ArcInfo({ arc, index }: Props) {
                                 href={uri}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="gap-3 flex items-center justify-center px-5 py-2 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus:scale-110 active:scale-105"
+                                className="gap-3 flex items-center justify-center px-5 py-2 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
                             >
                                 {/* TODO <Icon className="w-4 h-4" name={DOWNLOAD_TYPE_ICON[type]} /> */}
                                 <p className="uppercase font-semibold">{DOWNLOAD_TYPE_NAME[type]}</p>

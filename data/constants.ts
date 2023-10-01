@@ -1,10 +1,5 @@
 import { DownloadType, LanguageCode } from '@/data/schemas';
 
-export const STYLE = {
-    container:
-        'border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
-};
-
 export const LANGUAGE_NAME: Record<LanguageCode, string> = {
     [LanguageCode.jp]: 'Japanese',
     [LanguageCode.en]: 'English',

@@ -1,5 +1,7 @@
+import View from '@/component/View';
 import { LANGUAGE_NAME } from '@/data/constants';
 import { Episode } from '@/data/schemas';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 
 interface Props {
@@ -9,6 +11,8 @@ interface Props {
 }
 
 export default function Episode({ episode, index, arcIndex }: Props) {
+    const cookieStore = cookies();
+
     const {
         images,
         duration,
@@ -55,9 +59,6 @@ export default function Episode({ episode, index, arcIndex }: Props) {
             value: subLanguages.join(', ')
         });
 
-    // TODO const cookieName = `arc-${arcIndex}-ep-${index}-viewed`;
-    // const cookieValue = Astro.cookies.get(cookieName)?.boolean() ?? false;
-
     return (
         <div
             className="relative w-[80vw] sm:w-[20rem] lg:w-[24rem] h-fit flex flex-col justify-center gap-4 snap-start"
@@ -78,12 +79,14 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                     </div>
                 )}
 
-                {/* TODO <View
-                    defaultValue={cookieValue}
-                    client:load
+                <View
+                    defaultValue={
+                        cookieStore.has(`arc-${arcIndex}-viewed`) ||
+                        cookieStore.has(`arc-${arcIndex}-ep-${index}-viewed`)
+                    }
                     id={`arc-${arcIndex}-ep-${index}`}
                     overrideId={`arc-${arcIndex}`}
-                /> */}
+                />
             </div>
 
             <div className="relative flex w-full sm:w-fit justify-center sm:justify-start flex-col gap-4">
@@ -96,7 +99,7 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                             href={uri}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="gap-3 flex items-center justify-center p-4 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus:scale-110 active:scale-105"
+                            className="gap-3 flex items-center justify-center p-4 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
                         >
                             {/* TODO <Icon className="w-4 h-4" name={DOWNLOAD_TYPE_ICON[type]} /> */}
                         </a>

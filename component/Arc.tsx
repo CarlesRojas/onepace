@@ -1,4 +1,6 @@
+import View from '@/component/View';
 import { Arc } from '@/data/schemas';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { CSSProperties } from 'react';
 
@@ -8,6 +10,8 @@ interface Props {
 }
 
 export default function Arc({ arc, index }: Props) {
+    const cookieStore = cookies();
+
     const { color, images, invariant_title, duration } = arc;
 
     return (
@@ -38,7 +42,7 @@ export default function Arc({ arc, index }: Props) {
                 </div>
             </a>
 
-            {/* TODO <View defaultValue={cookieValue} client:load id={`arc-${index}`} borderReduction /> */}
+            <View defaultValue={cookieStore.has(`arc-${index}-viewed`)} id={`arc-${index}`} borderReduction />
         </div>
     );
 }

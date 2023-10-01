@@ -15,7 +15,7 @@ export default function Header() {
         <nav className="relative gap-0 md:gap-1 flex flex-col md:flex-row w-fit h-full items-center justify-center">
             <a
                 href="/"
-                className={`uppercase flex items-center justify-center h-full px-4 py-4 md:py-0 text-lg font-semibold cursor-pointer outline-none pointer:hover:text-blue-400 pointer:focus:text-blue-400 pointer:focus:underline underline-offset-8 decoration-2 active:text-blue-500 ${
+                className={`uppercase flex items-center justify-center h-full px-4 py-4 md:py-0 text-lg font-semibold cursor-pointer outline-none pointer:hover:text-blue-400 pointer:focus-visible:text-blue-400 pointer:focus-visible:underline underline-offset-8 decoration-2 active:text-blue-500 ${
                     pathname === '/' ? 'text-blue-500' : ''
                 }`}
             >
@@ -24,7 +24,7 @@ export default function Header() {
 
             <a
                 href="/about"
-                className={`uppercase flex items-center justify-center h-full px-4 py-4 md:py-0 text-lg font-semibold cursor-pointer outline-none pointer:hover:text-blue-400 pointer:focus:text-blue-400 pointer:focus:underline underline-offset-8 decoration-2 active:text-blue-500 ${
+                className={`uppercase flex items-center justify-center h-full px-4 py-4 md:py-0 text-lg font-semibold cursor-pointer outline-none pointer:hover:text-blue-400 pointer:focus-visible:text-blue-400 pointer:focus-visible:underline underline-offset-8 decoration-2 active:text-blue-500 ${
                     pathname === '/about' ? 'text-blue-500' : ''
                 }`}
             >
@@ -41,7 +41,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'One Pace Discord'}
                 className={
-                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus:scale-110 pointer:focus:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
                 <RiDiscordFill className="w-full h-full pointer-events-none" />
@@ -53,7 +53,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'Arlong Park Forums'}
                 className={
-                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus:scale-110 pointer:focus:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
                 <SVG src="/asset/icon/ArlongPark.svg" className="w-full h-full pointer-events-none" />
@@ -65,7 +65,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 aria-label={'One Piece Tracklist'}
                 className={
-                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus:scale-110 pointer:focus:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
             >
                 <RiMusic2Line className="w-full h-full pointer-events-none" />
@@ -77,7 +77,7 @@ export default function Header() {
         <header className="sticky z-50 top-0 left-0 w-full h-24 flex gap-2 sm:gap-4 justify-between items-center py-4 px-4 md:px-8 bg-neutral-50 dark:bg-neutral-900 border-b border-b-neutral-200 dark:border-b-neutral-800 shadow-md">
             <a
                 href="/"
-                className={`relative w-fit h-full cursor-pointer transition-transform outline-none pointer:hover:scale-110 pointer:focus:scale-110 active:scale-105`}
+                className={`relative w-fit h-full cursor-pointer transition-transform outline-none pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105`}
             >
                 <Image
                     src="/asset/icon/OnePace.svg"
@@ -91,7 +91,7 @@ export default function Header() {
             <a
                 className={`${
                     pathname === '/' ? 'hidden' : 'flex'
-                } group gap-2 items-center w-fit h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus:scale-110 pointer:focus:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                } group gap-2 items-center w-fit h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm`}
                 href="/"
                 aria-label="Back"
             >
@@ -102,7 +102,7 @@ export default function Header() {
 
             <button
                 className={
-                    'flex md:hidden items-center justify-center w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus:scale-110 pointer:focus:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
+                    'flex md:hidden items-center justify-center w-14 h-14 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 !bg-opacity-80 backdrop-blur-md shadow-sm'
                 }
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
