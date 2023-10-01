@@ -15,12 +15,6 @@ export const DOWNLOAD_TYPE_NAME: Record<DownloadType, string> = {
     [DownloadType.TELEGRAM]: 'Telegram'
 };
 
-export const DOWNLOAD_TYPE_ICON: Record<DownloadType, string> = {
-    [DownloadType.MAGNET]: 'fa-solid:magnet',
-    [DownloadType.TORRENT]: 'fa-solid:download',
-    [DownloadType.TELEGRAM]: 'file-icons:telegram'
-};
-
 export const HOW_TO_WATCH = [
     'Watch all One Pace episodes.',
     'Watch all One Pace episodes.',

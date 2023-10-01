@@ -1,8 +1,9 @@
 import View from '@/component/View';
 import { LANGUAGE_NAME } from '@/data/constants';
-import { Episode } from '@/data/schemas';
+import { DownloadType, Episode } from '@/data/schemas';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
 
 interface Props {
     episode: Episode;
@@ -59,6 +60,12 @@ export default function Episode({ episode, index, arcIndex }: Props) {
             value: subLanguages.join(', ')
         });
 
+    const DOWNLOAD_TYPE_ICON: Record<DownloadType, JSX.Element> = {
+        [DownloadType.MAGNET]: <FaMagnet className="w-4 h-4" />,
+        [DownloadType.TORRENT]: <FaDownload className="w-4 h-4" />,
+        [DownloadType.TELEGRAM]: <FaTelegramPlane className="w-4 h-4 scale-[1.4]" />
+    };
+
     return (
         <div
             className="relative w-[80vw] sm:w-[20rem] lg:w-[24rem] h-fit flex flex-col justify-center gap-4 snap-start"
@@ -101,7 +108,7 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                             rel="noopener noreferrer"
                             className="gap-3 flex items-center justify-center p-4 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
                         >
-                            {/* TODO <Icon className="w-4 h-4" name={DOWNLOAD_TYPE_ICON[type]} /> */}
+                            {DOWNLOAD_TYPE_ICON[type]}
                         </a>
                     ))}
                 </div>

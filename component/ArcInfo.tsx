@@ -1,6 +1,7 @@
 import { DOWNLOAD_TYPE_NAME, HOW_TO_WATCH, LANGUAGE_NAME } from '@/data/constants';
-import { Arc } from '@/data/schemas';
+import { Arc, DownloadType } from '@/data/schemas';
 import Image from 'next/image';
+import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
 
 interface Props {
     arc: Arc;
@@ -55,6 +56,12 @@ export default function ArcInfo({ arc, index }: Props) {
             value: subLanguages.join(', ')
         });
 
+    const DOWNLOAD_TYPE_ICON: Record<DownloadType, JSX.Element> = {
+        [DownloadType.MAGNET]: <FaMagnet className="w-4 h-4" />,
+        [DownloadType.TORRENT]: <FaDownload className="w-4 h-4" />,
+        [DownloadType.TELEGRAM]: <FaTelegramPlane className="w-4 h-4 scale-[1.4]" />
+    };
+
     return (
         <section className="relative flex flex-col w-full max-w-7xl m-auto items-center gap-8 px-4 sm:px-8 py-6 sm:py-12 scroll-mt-28 sm:scroll-mt-12">
             <div className="relative w-full h-fit flex flex-col md:flex-row items-center justify-center sm:items-start gap-8">
@@ -84,7 +91,7 @@ export default function ArcInfo({ arc, index }: Props) {
                                 rel="noopener noreferrer"
                                 className="gap-3 flex items-center justify-center px-5 py-2 cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
                             >
-                                {/* TODO <Icon className="w-4 h-4" name={DOWNLOAD_TYPE_ICON[type]} /> */}
+                                {DOWNLOAD_TYPE_ICON[type]}
                                 <p className="uppercase font-semibold">{DOWNLOAD_TYPE_NAME[type]}</p>
                             </a>
                         ))}
