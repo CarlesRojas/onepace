@@ -1,5 +1,6 @@
 import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME, HOW_TO_WATCH, LANGUAGE_NAME } from '@/data/constants';
 import { Arc, DownloadType } from '@/data/schemas';
+import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
 
@@ -37,7 +38,7 @@ export default function ArcInfo({ arc, index }: Props) {
     if (manga_chapters) info.push({ label: 'Manga Chapters', value: manga_chapters });
     if (anime_episodes) info.push({ label: 'Anime Episodes', value: anime_episodes });
 
-    if (duration) info.push({ label: 'Duration', value: duration });
+    if (duration) info.push({ label: 'Duration', value: getDurationString(getDurationInSeconds(duration)) });
     if (resolution) info.push({ label: 'Resolution', value: resolution });
 
     if (released_at)

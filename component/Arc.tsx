@@ -1,5 +1,6 @@
 import View from '@/component/View';
 import { Arc } from '@/data/schemas';
+import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { CSSProperties } from 'react';
@@ -40,7 +41,9 @@ export default function Arc({ arc, index }: Props) {
                 </div>
 
                 <div className="absolute z-10 bottom-[0.1%] sm:bottom-[0.9%] flex items-center justify-center rounded-full">
-                    <p className="text-sm sm:text-base font-semibold opacity-50 text-neutral-50">{duration}</p>
+                    <p className="text-sm sm:text-base font-semibold opacity-50 text-neutral-50">
+                        {getDurationString(getDurationInSeconds(duration))}
+                    </p>
                 </div>
             </a>
 

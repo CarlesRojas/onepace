@@ -4,4 +4,3 @@
 
 -   [ ] Pass initial cookies to Stats
 -   [ ] Mark previous episodes as watched
--   [ ] Improve duration parsing
