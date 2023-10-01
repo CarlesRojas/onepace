@@ -65,7 +65,7 @@ export default function ArcInfo({ arc, index }: Props) {
     };
 
     return (
-        <section className="relative flex flex-col w-full max-w-7xl m-auto items-center gap-8 px-4 sm:px-8 py-6 sm:py-12 scroll-mt-28 sm:scroll-mt-12">
+        <section className="relative flex flex-col w-full max-w-7xl m-auto items-center px-4 sm:px-8 gap-2 sm:gap-4 py-4 sm:py-8 scroll-mt-28 sm:scroll-mt-12">
             <div className="relative w-full h-fit flex flex-col md:flex-row items-center justify-center sm:items-start gap-8">
                 <div
                     className="arc-link relative flex items-center justify-center h-[27rem] w-[18rem] min-w-[18rem] sm:h-[33rem] sm:w-[22rem] sm:min-w-[22rem] xl:h-[36rem] xl:w-[24rem] xl:min-w-[24rem] rounded-lg shadow-lg"

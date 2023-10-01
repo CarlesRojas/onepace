@@ -13,7 +13,7 @@ export default function Episodes({ arc, index }: Props) {
     const { episodes } = arc;
 
     return (
-        <section className="relative flex flex-col w-full items-center gap-8 py-6 sm:py-12">
+        <section className="relative flex flex-col w-full items-center gap-2 sm:gap-4 py-4 sm:py-8">
             <HorizontalSlider
                 id="episode"
                 numberOfItems={episodes.length}
@@ -22,7 +22,7 @@ export default function Episodes({ arc, index }: Props) {
                 goToNextToViewEnabled={!cookieStore.has(`arc-${index}-viewed`)}
             />
 
-            <h2 className="font-medium text-2xl sm:text-3xl">Episodes</h2>
+            <h2 className="font-medium text-xl sm:text-3xl">Episodes</h2>
 
             <div
                 className="relatve w-full h-fit overflow-x-auto snap-x snap-mandatory scroll-pl-4 sm:scroll-pl-8"

@@ -14,13 +14,25 @@ const TOP: Record<number, string> = {
     3: '5rem'
 };
 
-export default function Stats() {
+interface Props {
+    defaultArcStartPositionInSeconds: number[];
+    defaultArcFinished: boolean[];
+    defaultTotalSeconds: number;
+    defaultTotalSecondsWatched: number;
+}
+
+export default function Stats({
+    defaultArcStartPositionInSeconds,
+    defaultArcFinished,
+    defaultTotalSeconds,
+    defaultTotalSecondsWatched
+}: Props) {
     const { sub, unsub } = useEvents<string>();
 
     const arcs = arcsData.map((arc: any) => ArcSchema.parse(arc) as Arc);
 
-    const arcStartPositionInSeconds = useRef<number[]>([]);
-    const arcFinished = useRef<boolean[]>([]);
+    const arcStartPositionInSeconds = useRef<number[]>(defaultArcStartPositionInSeconds);
+    const arcFinished = useRef<boolean[]>(defaultArcFinished);
 
     const getTotalSeconds = useCallback(() => {
         arcStartPositionInSeconds.current = [];
@@ -34,8 +46,8 @@ export default function Stats() {
     }, [arcs]);
 
     const [toggle, setToggle] = useState(0);
-    const [totalSeconds, setTotalSeconds] = useState(getTotalSeconds());
-    const [totalSecondsWatched, setTotalSecondsWatched] = useState(0);
+    const [totalSeconds, setTotalSeconds] = useState(defaultTotalSeconds);
+    const [totalSecondsWatched, setTotalSecondsWatched] = useState(defaultTotalSecondsWatched);
 
     useEffect(() => {
         arcFinished.current = [];
@@ -91,8 +103,8 @@ export default function Stats() {
     };
 
     return (
-        <section className="relative flex flex-col w-full items-center gap-8 sm:gap-12 p-4 sm:p-12">
-            <h2 className="font-medium text-2xl sm:text-3xl">Your progress</h2>
+        <section className="relative flex flex-col w-full items-center gap-2 sm:gap-4 py-4 sm:py-8 px-4 sm:px-8">
+            <h2 className="font-medium text-xl sm:text-3xl">Your progress</h2>
 
             <div className="relative flex flex-col w-full h-full justify-start">
                 <div className="relative w-full flex justify-between pb-1">
