@@ -44,7 +44,7 @@ export default function Dialog({ children, title, open, onClose, className, ...r
     return (
         <dialog
             onClick={onDialogClick}
-            className={`z-10 grid transition-all duration-300 fixed top-24 mr-5 mt-5 right-[-100%] open:right-0 ml-auto bg-turquoise-800 w-fit h-fit rounded-xl backdrop:opacity-0 backdrop:cursor-pointer text-neutral-950 dark:text-neutral-50 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-925 !bg-opacity-80 backdrop-blur-md shadow-xl ${className}`}
+            className={`z-10 grid transition-all duration-300 fixed top-24 mr-5 mt-5 right-[-100%] open:right-0 ml-auto bg-turquoise-800 w-fit h-fit rounded-xl backdrop:opacity-0 backdrop:cursor-pointer text-neutral-950 dark:text-neutral-50 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-90 backdrop-blur-md shadow-xl ${className}`}
             ref={dialogRef}
             onClose={closeDialog}
             {...rest}

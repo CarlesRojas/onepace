@@ -84,7 +84,7 @@ export default function ArcInfo({ arc, index }: Props) {
                 </div>
 
                 <div className="relative flex w-full sm:w-fit justify-center sm:justify-start flex-col gap-6">
-                    <h1 className="font-semibold text-xl sm:text-3xl">{title}</h1>
+                    <h1 className="font-semibold text-xl sm:text-2xl">{title}</h1>
                     <p className="opacity-70 sm:text-lg max-w-3xl">{description}</p>
 
                     <div className="flex flex-wrap gap-3">

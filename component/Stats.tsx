@@ -103,8 +103,8 @@ export default function Stats({
     };
 
     return (
-        <section className="relative flex flex-col w-full h-1/5 min-h-[20%] items-center justify-center gap-2 sm:gap-4 px-4 sm:px-8">
-            <h2 className="font-medium text-xl sm:text-3xl">Your progress</h2>
+        <section className="relative flex flex-col w-full h-[18%] min-h-[18%] items-center justify-center gap-2 sm:gap-4 px-4 sm:px-8">
+            <h2 className="font-medium text-xl sm:text-2xl">Your progress</h2>
 
             <div className="relative flex flex-col w-full h-fit justify-start">
                 <div className="relative w-full flex justify-between pb-1">
@@ -120,7 +120,7 @@ export default function Stats({
                 </div>
 
                 <progress
-                    className="w-full h-8 progress-red-500 border border-neutral-400 dark:border-neutral-600 rounded-full [&::-webkit-progress-bar]:overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-neutral-200 dark:[&::-webkit-progress-bar]:bg-neutral-800 [&::-webkit-progress-value]:bg-blue-400 [&::-webkit-progress-value]:transition-all"
+                    className="w-full h-6 progress-red-500 border border-neutral-400 dark:border-neutral-600 rounded-full [&::-webkit-progress-bar]:overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-neutral-200 dark:[&::-webkit-progress-bar]:bg-neutral-800 [&::-webkit-progress-value]:bg-blue-400 [&::-webkit-progress-value]:transition-all"
                     value={totalSecondsWatched}
                     max={totalSeconds}
                 />

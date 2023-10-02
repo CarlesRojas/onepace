@@ -1,6 +1,5 @@
 import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME } from '@/data/constants';
 import { DownloadType, Episode } from '@/data/schemas';
-import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
 
@@ -9,7 +8,7 @@ interface Props {
 }
 
 export default function NextEpisode({ episode }: Props) {
-    const { images, duration, invariant_title, translations, downloads, id } = episode;
+    const { images, invariant_title, translations, downloads, id } = episode;
 
     const translation = translations.find((t) => t.language_code === 'en') ?? {
         title: invariant_title,
@@ -24,8 +23,8 @@ export default function NextEpisode({ episode }: Props) {
     };
 
     return (
-        <div className="relative flex w-full max-w-[30rem] md:max-w-[40rem] overflow-x-hidden h-full p-2 sm:p-4 gap-2 sm:gap-4 rounded-2xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-400 dark:border-neutral-600">
-            <div className="relative flex items-center justify-center h-full max-h-full aspect-[16/9] rounded-lg shadow-lg">
+        <div className="relative flex w-fit max-w-[90vw] overflow-x-hidden h-full p-3 sm:p-4 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
+            <div className="relative flex overflow-hidden items-center justify-center h-full max-h-full aspect-[16/9] rounded-lg shadow-lg">
                 {images.length > 0 ? (
                     <Image
                         src={`/asset/image/${images[0].src.replace('.webp', '.jpg')}`}
@@ -33,7 +32,7 @@ export default function NextEpisode({ episode }: Props) {
                         width={400}
                         height={225}
                         priority
-                        className="animate-skeketon dark:animate-skeketonDark h-full w-full object-cover rounded-xl select-none"
+                        className="animate-skeketon dark:animate-skeketonDark h-full w-full object-cover rounded-lg select-none"
                         sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px"
                     />
                 ) : (
@@ -45,15 +44,13 @@ export default function NextEpisode({ episode }: Props) {
 
             <div className="relative flex h-full flex-col justify-between">
                 <div className="relative flex flex-col sm:gap-1">
-                    <h1 className="font-semibold text-base sm:text-2xl text-ellipsis whitespace-nowrap overflow-hidden">
+                    <p className="opacity-60 text-sm sm:text-base !leading-4">Next episode to watch:</p>
+                    <h2 className="font-semibold text-base sm:text-2xl text-ellipsis whitespace-nowrap overflow-hidden max-w-[12rem] sm:max-w-[20rem]">
                         {title}
-                    </h1>
-                    <p className="font-semibold opacity-60 text-sm sm:text-base">
-                        {getDurationString(getDurationInSeconds(duration))}
-                    </p>
+                    </h2>
                 </div>
 
-                <div className="flex gap-1 sm:gap-3">
+                <div className="flex gap-2 sm:gap-3">
                     {downloads.map(({ type, uri, id }) => (
                         <a
                             key={id}

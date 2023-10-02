@@ -16,13 +16,13 @@ interface Props {
 export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeToWatch }: Props) {
     const { sub, unsub } = useEvents<string>();
 
-    const arcs = arcsData.map((arc: any) => ArcSchema.parse(arc) as Arc);
-
     const [nextArcToWatch, setNextArcToWatch] = useState(defaultNextArcToWatch);
     const [nextEpisodeToWatch, setNextEpisodeToWatch] = useState(defaultNextEpisodeToWatch);
-    const [toggle, setToggle] = useState(0);
+    const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
+        const arcs = arcsData.map((arc: any) => ArcSchema.parse(arc) as Arc);
+
         let newNextArcToWatch: Arc | null = null;
         let newNextEpisodeToWatch: Episode | null = null;
 
@@ -49,10 +49,10 @@ export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeT
             setNextArcToWatch(newNextArcToWatch);
             setNextEpisodeToWatch(newNextEpisodeToWatch);
         }, 0);
-    }, [arcs, toggle]);
+    }, [toggle]);
 
     const onViewChanged = (id: string) => {
-        setToggle((prev) => prev + 1);
+        setToggle((prev) => !prev);
     };
 
     useEffect(() => {
@@ -64,8 +64,8 @@ export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeT
     }, [sub, unsub]);
 
     return (
-        <section className="relative w-full overflow-y-hidden overflow-x-auto h-1/5 min-h-[20%] items-center px-4 sm:px-8 py-4 sm:py-8">
-            <div className="relatve w-fit h-full flex gap-2 sm:gap-4">
+        <section className="relative w-full overflow-y-hidden overflow-x-auto h-[22%] min-h-[22%] items-center px-4 sm:px-8 py-4 sm:py-8">
+            <div className="relatve w-fit h-full flex gap-6">
                 {nextArcToWatch && <NextArc arc={nextArcToWatch} />}
                 {nextEpisodeToWatch && <NextEpisode episode={nextEpisodeToWatch} />}
             </div>

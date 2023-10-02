@@ -1,6 +1,5 @@
 import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME } from '@/data/constants';
 import { Arc, DownloadType } from '@/data/schemas';
-import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
 
@@ -9,7 +8,7 @@ interface Props {
 }
 
 export default function NextArc({ arc }: Props) {
-    const { images, color, duration, invariant_title, translations, downloads, id } = arc;
+    const { images, color, invariant_title, translations, downloads, id } = arc;
 
     const translation = translations.find((t) => t.language_code === 'en') ?? {
         title: invariant_title,
@@ -24,9 +23,9 @@ export default function NextArc({ arc }: Props) {
     };
 
     return (
-        <div className="relative flex w-full max-w-[20rem] overflow-x-hidden md:max-w-[30rem] h-full p-2 sm:p-4 gap-2 sm:gap-4 rounded-2xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-400 dark:border-neutral-600">
+        <div className="relative flex w-fit max-w-[90vw] overflow-x-hidden h-full p-3 sm:p-4 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
             <div
-                className="arc-link relative flex overflow-hidden items-center justify-center h-full max-h-full aspect-[3/4] rounded-lg shadow-lg"
+                className="relative flex overflow-hidden items-center justify-center h-full max-h-full aspect-[3/4] rounded-lg shadow-lg"
                 style={{ borderColor: color ?? 'transparent' }}
             >
                 <Image
@@ -42,12 +41,10 @@ export default function NextArc({ arc }: Props) {
 
             <div className="relative flex h-full flex-col justify-between">
                 <div className="relative flex flex-col sm:gap-1">
-                    <h1 className="font-semibold text-base sm:text-2xl text-ellipsis whitespace-nowrap overflow-hidden">
+                    <p className="opacity-60 text-sm sm:text-base !leading-4">Next arc to watch:</p>
+                    <h2 className="font-semibold text-base sm:text-2xl text-ellipsis whitespace-nowrap overflow-hidden max-w-[15rem] sm:max-w-[20rem]">
                         {title}
-                    </h1>
-                    <p className="font-semibold opacity-60 text-sm sm:text-base">
-                        {getDurationString(getDurationInSeconds(duration))}
-                    </p>
+                    </h2>
                 </div>
 
                 <div className="flex gap-2 sm:gap-3">

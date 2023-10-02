@@ -22,7 +22,7 @@ export default function Episodes({ arc, index }: Props) {
                 goToNextToViewEnabled={!cookieStore.has(`arc-${index}-viewed`)}
             />
 
-            <h2 className="font-medium text-xl sm:text-3xl">Episodes</h2>
+            <h2 className="font-medium text-xl sm:text-2xl">Episodes</h2>
 
             <div
                 className="relatve w-full h-fit overflow-x-auto snap-x snap-mandatory scroll-pl-4 sm:scroll-pl-8"
