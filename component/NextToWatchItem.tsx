@@ -85,7 +85,11 @@ export default function NextToWatchItem({
                 </div>
             </div>
 
-            <View defaultValue={false} id={`arc-${arcIndex}-ep-${episodeIndex}`} autoReset />
+            <View
+                defaultValue={false}
+                id={type === 'Arc' ? `arc-${arcIndex}` : `arc-${arcIndex}-ep-${episodeIndex}`}
+                autoReset
+            />
         </div>
     );
 }
