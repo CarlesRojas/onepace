@@ -5,7 +5,8 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'neutral-925': '#111111'
+                'neutral-925': '#111111',
+                'neutral-150': '#EDEDED'
             },
 
             gridTemplateAreas: {

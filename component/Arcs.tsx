@@ -13,7 +13,7 @@ export default function Arcs() {
             <h2 className="font-medium text-xl sm:text-2xl">Arcs</h2>
 
             <div
-                className="relatve w-full h-[40vh] overflow-y-hidden overflow-x-auto snap-x snap-mandatory scroll-pl-4"
+                className="relatve w-full h-[40vh] min-h-[20rem] 2xl:min-h-[30rem] overflow-y-hidden overflow-x-auto snap-x snap-mandatory scroll-pl-4"
                 id="arcsScroll"
             >
                 <div className="relatve min-w-full w-fit h-full flex flex-row gap-6 px-4 pt-4">

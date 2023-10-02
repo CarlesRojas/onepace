@@ -34,6 +34,7 @@ export const TranslationSchema = z.object({
     language_code: z.nativeEnum(LanguageCode),
     title: z.string()
 });
+export type Translation = z.infer<typeof TranslationSchema>;
 
 export const DownloadTranslationSchema = z.object({
     language_code: z.nativeEnum(LanguageCode),

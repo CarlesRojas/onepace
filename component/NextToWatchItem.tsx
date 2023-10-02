@@ -1,20 +1,30 @@
 import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME } from '@/data/constants';
-import { DownloadType, Episode } from '@/data/schemas';
+import { Download, DownloadType, Image as ImageType, Translation } from '@/data/schemas';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
 import View from './View';
 
 interface Props {
-    episode: Episode;
     arcIndex: number;
-    episodeIndex: number;
+    episodeIndex?: number;
+    image?: ImageType;
+    itemTitle: string;
+    translations: Translation[];
+    downloads: Download[];
+    type: 'Arc' | 'Episode';
 }
 
-export default function NextEpisode({ episode, arcIndex, episodeIndex }: Props) {
-    const { images, invariant_title, translations, downloads, id } = episode;
-
+export default function NextToWatchItem({
+    arcIndex,
+    episodeIndex,
+    image,
+    itemTitle,
+    translations,
+    downloads,
+    type
+}: Props) {
     const translation = translations.find((t) => t.language_code === 'en') ?? {
-        title: invariant_title,
+        title: itemTitle,
         description: ''
     };
     const { title } = translation;
@@ -25,18 +35,20 @@ export default function NextEpisode({ episode, arcIndex, episodeIndex }: Props) 
         [DownloadType.TELEGRAM]: <FaTelegramPlane className="scale-[1.4]" />
     };
 
+    const scale = type === 'Arc' ? 'scale-[1.2] -mt-[25%]' : '';
+
     return (
-        <div className="relative flex w-full h-full p-3 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
-            <div className="relative h-[12rem] min-h-[12rem] w-[11rem] min-w-[11rem] flex overflow-hidden items-center justify-center rounded-lg shadow-lg">
-                {images.length > 0 ? (
+        <div className="relative flex w-full h-full p-3 gap-3 sm:gap-6 rounded-2xl bg-neutral-150 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
+            <div className="relative h-[9rem] min-h-[9rem] w-[8.5rem] min-w-[8.5rem] md:h-[10rem] md:min-h-[10rem] md:w-[9.25rem] md:min-w-[9.25rem] 2xl:h-[12rem] 2xl:min-h-[12rem] 2xl:w-[11rem] 2xl:min-w-[11rem] flex overflow-hidden items-center justify-center rounded-lg shadow-lg">
+                {image ? (
                     <Image
-                        src={`/asset/image/${images[0].src.replace('.webp', '.jpg')}`}
-                        alt={episode.invariant_title}
-                        width={400}
-                        height={225}
+                        src={`/asset/image/${image.src.replace('.webp', '.jpg')}`}
+                        alt={title}
+                        width={256}
+                        height={256}
                         priority
-                        className="animate-skeketon dark:animate-skeketonDark h-full w-full object-cover rounded-lg select-none"
-                        sizes="(max-width: 639px) 225px, (max-width: 767px) 275px, (max-width: 1023px) 325px, 400px" // TODO
+                        className={`${scale} animate-skeketon dark:animate-skeketonDark h-full w-full object-cover rounded-lg select-none`}
+                        sizes="256px"
                     />
                 ) : (
                     <div className="relative flex items-center justify-center w-full h-full bg-white dark:bg-neutral-950 !bg-opacity-70 rounded-xl">
@@ -47,8 +59,11 @@ export default function NextEpisode({ episode, arcIndex, episodeIndex }: Props) 
 
             <div className="relative flex h-full flex-col justify-between">
                 <div className="relative flex flex-col sm:gap-1">
-                    <h2 className="font-semibold text-base sm:text-lg line-clamp-4 pr-8">{title}</h2>
-                    <p className="opacity-60 text-sm sm:text-base !leading-4 pr-8">Episode {episodeIndex + 1}</p>
+                    <h2 className="font-semibold text-base sm:text-lg line-clamp-3 md:line-clamp-4 pr-8">{title}</h2>
+
+                    <p className="opacity-60 text-sm sm:text-base pr-8">
+                        {type} {type === 'Arc' ? arcIndex + 1 : episodeIndex! + 1}
+                    </p>
                 </div>
 
                 <div className="flex gap-2 sm:gap-3">

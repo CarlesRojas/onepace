@@ -1,8 +1,7 @@
 'use client';
 
 import { Event, useEvents } from '@/component/Events';
-import NextArc from '@/component/NextArc';
-import NextEpisode from '@/component/NextEpisode';
+import { default as NextToWatchItem } from '@/component/NextToWatchItem';
 import arcsData from '@/data/data.json';
 import { Arc, ArcSchema, Episode } from '@/data/schemas';
 import { hasCookie } from 'cookies-next';
@@ -67,14 +66,31 @@ export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeT
     const episodeIndex = nextArcToWatch?.episodes.findIndex((episode) => episode.id === nextEpisodeToWatch?.id) ?? 0;
 
     return (
-        <section className="relative flex flex-col gap-4 w-full max-w-7xl h-fit items-center px-4 sm:px-8 py-4 sm:py-8">
+        <section className="relative flex flex-col gap-8 w-full max-w-7xl h-fit items-center px-4 sm:px-8 py-6 sm:py-8">
             <h2 className="font-medium text-xl sm:text-2xl">Next to watch</h2>
 
             <div className="relatve w-full h-fit grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {nextArcToWatch && <NextArc arc={nextArcToWatch} arcIndex={arcIndex} />}
+                {nextArcToWatch && (
+                    <NextToWatchItem
+                        arcIndex={arcIndex}
+                        image={nextArcToWatch.images.length > 0 ? nextArcToWatch.images[0] : undefined}
+                        itemTitle={nextArcToWatch.invariant_title}
+                        translations={nextArcToWatch.translations}
+                        downloads={nextArcToWatch.downloads}
+                        type="Arc"
+                    />
+                )}
 
                 {nextEpisodeToWatch && (
-                    <NextEpisode episode={nextEpisodeToWatch} arcIndex={arcIndex} episodeIndex={episodeIndex} />
+                    <NextToWatchItem
+                        arcIndex={arcIndex}
+                        episodeIndex={episodeIndex}
+                        image={nextEpisodeToWatch.images.length > 0 ? nextEpisodeToWatch.images[0] : undefined}
+                        itemTitle={nextEpisodeToWatch.invariant_title}
+                        translations={nextEpisodeToWatch.translations}
+                        downloads={nextEpisodeToWatch.downloads}
+                        type="Episode"
+                    />
                 )}
             </div>
         </section>

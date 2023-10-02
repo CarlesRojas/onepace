@@ -49,7 +49,7 @@ export default function Home() {
     }, 0);
 
     return (
-        <main className="relative w-full h-fit flex flex-col items-center gap-4">
+        <main className="relative w-full h-fit flex flex-col items-center">
             <Arcs />
 
             <NextToWatch
