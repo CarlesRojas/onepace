@@ -50,13 +50,13 @@ export default function Home() {
 
     return (
         <main className="relative w-full h-fit flex flex-col items-center">
-            <Arcs />
-
             <NextToWatch
                 arcs={arcs}
                 defaultNextArcToWatch={nextArcToWatchIndex}
                 defaultNextEpisodeToWatch={nextEpisodeToWatchIndex}
             />
+
+            <Arcs />
 
             <Stats
                 arcs={arcs}
