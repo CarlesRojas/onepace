@@ -67,8 +67,10 @@ export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeT
     const episodeIndex = nextArcToWatch?.episodes.findIndex((episode) => episode.id === nextEpisodeToWatch?.id) ?? 0;
 
     return (
-        <section className="relative w-full overflow-y-hidden overflow-x-auto h-[22%] min-h-[22%] items-center px-4 sm:px-8 py-4 sm:py-8">
-            <div className="relatve w-fit h-full flex gap-6">
+        <section className="relative flex flex-col gap-4 w-full max-w-7xl h-fit items-center px-4 sm:px-8 py-4 sm:py-8">
+            <h2 className="font-medium text-xl sm:text-2xl">Next to watch</h2>
+
+            <div className="relatve w-full h-fit grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {nextArcToWatch && <NextArc arc={nextArcToWatch} arcIndex={arcIndex} />}
 
                 {nextEpisodeToWatch && (

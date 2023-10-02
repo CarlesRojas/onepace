@@ -110,7 +110,7 @@ export default function Episode({ episode, index, arcIndex }: Props) {
                             href={uri}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-[0.9rem] gap-3 flex items-center justify-center cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
+                            className="w-12 h-12 p-3 gap-3 flex items-center justify-center cursor-pointer transition-transform outline-none rounded-full border border-sky-300 dark:border-sky-700 bg-sky-200 dark:bg-sky-900 !bg-opacity-80 backdrop-blur-md shadow-sm pointer:hover:scale-110 pointer:focus-visible:scale-110 active:scale-105"
                             aria-label={`Download ${DOWNLOAD_TYPE_NAME[type]}`}
                             data-tooltip-id="tooltip"
                             data-tooltip-content={DOWNLOAD_TOOLTIP[type]}

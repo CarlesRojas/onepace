@@ -49,19 +49,19 @@ export default function Home() {
     }, 0);
 
     return (
-        <main className="relative w-full h-[calc(100vh-6rem)] max-h-[calc(100vh-6rem)] flex flex-col items-center">
+        <main className="relative w-full h-fit flex flex-col items-center gap-4">
             <Arcs />
+
+            <NextToWatch
+                defaultNextArcToWatch={nextArcToWatchIndex}
+                defaultNextEpisodeToWatch={nextEpisodeToWatchIndex}
+            />
 
             <Stats
                 defaultArcStartPositionInSeconds={arcStartPositionInSeconds}
                 defaultArcFinished={arcFinished}
                 defaultTotalSeconds={totalSeconds}
                 defaultTotalSecondsWatched={totalSecondsWatched}
-            />
-
-            <NextToWatch
-                defaultNextArcToWatch={nextArcToWatchIndex}
-                defaultNextEpisodeToWatch={nextEpisodeToWatchIndex}
             />
         </main>
     );

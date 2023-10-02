@@ -166,7 +166,7 @@ const HorizontalSlider = ({
             <button
                 className={`${
                     scrolledToTheStart ? 'opacity-0 pointer-none select-none' : ''
-                } group w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-[0.9rem] rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                } group w-12 h-12 p-3 rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                 onClick={() => goPrev()}
                 type="button"
                 disabled={scrolledToTheStart}
@@ -193,7 +193,7 @@ const HorizontalSlider = ({
                                 firstNotWatched >= cleanFirstVisible.current)
                                 ? 'opacity-0 pointer-none select-none'
                                 : ''
-                        } group w-fit h-12 sm:h-14 p-3 sm:p-[0.9rem] rounded-full flex items-center justify-center gap-2 outline-none focus:scale-110 hover:scale-110 active:scale-105 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                        } group w-fit h-12 p-3 rounded-full flex items-center justify-center gap-2 outline-none focus:scale-110 hover:scale-110 active:scale-105 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                         onClick={() => goFirstNotWatched()}
                         type="button"
                         disabled={firstNotWatchedVisible}
@@ -228,7 +228,7 @@ const HorizontalSlider = ({
             <button
                 className={`${
                     scrolledToTheEnd ? 'opacity-0 pointer-none select-none' : ''
-                } groupw-12 w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-[0.9rem] rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                } groupw-12 w-12 h-12 p-3 rounded-full touch:hidden flex items-center justify-center outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                 onClick={() => goNext()}
                 type="button"
                 disabled={scrolledToTheEnd}

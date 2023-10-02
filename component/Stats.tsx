@@ -103,7 +103,7 @@ export default function Stats({
     };
 
     return (
-        <section className="relative flex flex-col w-full h-[18%] min-h-[18%] items-center justify-center gap-2 sm:gap-4 px-4 sm:px-8">
+        <section className="relative flex flex-col w-full h-fit items-center justify-center gap-2 sm:gap-4 px-4 sm:px-8 pb-16">
             <h2 className="font-medium text-xl sm:text-2xl">Your progress</h2>
 
             <div className="relative flex flex-col w-full h-fit justify-start">
@@ -125,7 +125,7 @@ export default function Stats({
                     max={totalSeconds}
                 />
 
-                <div className={`relative w-full h-[6.25rem]  ${totalSeconds > 0 ? 'hidden lg:flex' : 'hidden'}`}>
+                <div className={`relative w-full h-[6.25rem] ${totalSeconds > 0 ? 'hidden lg:flex' : 'hidden'}`}>
                     {arcs.map(({ id, invariant_title }, i) => (
                         <Fragment key={id}>
                             <div
@@ -143,7 +143,7 @@ export default function Stats({
                             <button
                                 key={id}
                                 type="button"
-                                className={`absolute z-10 w-5 h-5 -translate-x-1/2 outline-none pointer:hover:scale-125 pointer:focus-visible:scale-125 active:scale-110 ${
+                                className={`absolute z-10 w-4 h-4 2xl:w-5 2xl:h-5 -translate-x-1/2 outline-none pointer:hover:scale-125 pointer:focus-visible:scale-125 active:scale-110 ${
                                     arcFinished.current[i]
                                         ? 'bg-blue-400 border-blue-500 pointer:hover:bg-blue-500 pointer:focus-visible:bg-blue-500 active:bg-blue-500'
                                         : 'bg-neutral-300 dark:bg-neutral-700 border-neutral-400 dark:border-neutral-600 pointer:hover:bg-neutral-400 pointer:focus-visible:bg-neutral-400 active:bg-neutral-400'
