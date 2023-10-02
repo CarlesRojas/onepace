@@ -2,12 +2,14 @@ import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME } from '@/data/constants';
 import { Arc, DownloadType } from '@/data/schemas';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
+import View from './View';
 
 interface Props {
     arc: Arc;
+    arcIndex: number;
 }
 
-export default function NextArc({ arc }: Props) {
+export default function NextArc({ arc, arcIndex }: Props) {
     const { images, color, invariant_title, translations, downloads, id } = arc;
 
     const translation = translations.find((t) => t.language_code === 'en') ?? {
@@ -23,7 +25,7 @@ export default function NextArc({ arc }: Props) {
     };
 
     return (
-        <div className="relative flex w-fit max-w-[90vw] overflow-x-hidden h-full p-3 sm:p-4 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
+        <div className="relative flex w-fit max-w-[90vw] h-full p-3 sm:p-4 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
             <div
                 className="relative flex overflow-hidden items-center justify-center h-full max-h-full aspect-[3/4] rounded-lg shadow-lg"
                 style={{ borderColor: color ?? 'transparent' }}
@@ -45,6 +47,7 @@ export default function NextArc({ arc }: Props) {
                     <h2 className="font-semibold text-base sm:text-2xl text-ellipsis whitespace-nowrap overflow-hidden max-w-[15rem] sm:max-w-[20rem]">
                         {title}
                     </h2>
+                    <p className="opacity-60 text-sm sm:text-base !leading-4">Arc {arcIndex + 1}</p>
                 </div>
 
                 <div className="flex gap-2 sm:gap-3">
@@ -65,6 +68,8 @@ export default function NextArc({ arc }: Props) {
                     ))}
                 </div>
             </div>
+
+            <View defaultValue={false} id={`arc-${arcIndex}`} autoReset />
         </div>
     );
 }

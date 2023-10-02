@@ -162,7 +162,7 @@ const HorizontalSlider = ({
     }, [sub, onViewChanged, unsub]);
 
     return (
-        <div className="w-full h-fit px-4 sm:px-8 flex gap-1 sm:gap-2 justify-between absolute z-10 top-3 sm:top-10">
+        <div className="w-full h-fit px-4 sm:px-8 flex gap-1 sm:gap-2 justify-between absolute z-10 top-2 sm:top-4">
             <button
                 className={`${
                     scrolledToTheStart ? 'opacity-0 pointer-none select-none' : ''

@@ -2,12 +2,15 @@ import { DOWNLOAD_TOOLTIP, DOWNLOAD_TYPE_NAME } from '@/data/constants';
 import { DownloadType, Episode } from '@/data/schemas';
 import Image from 'next/image';
 import { FaDownload, FaMagnet, FaTelegramPlane } from 'react-icons/fa';
+import View from './View';
 
 interface Props {
     episode: Episode;
+    arcIndex: number;
+    episodeIndex: number;
 }
 
-export default function NextEpisode({ episode }: Props) {
+export default function NextEpisode({ episode, arcIndex, episodeIndex }: Props) {
     const { images, invariant_title, translations, downloads, id } = episode;
 
     const translation = translations.find((t) => t.language_code === 'en') ?? {
@@ -23,7 +26,7 @@ export default function NextEpisode({ episode }: Props) {
     };
 
     return (
-        <div className="relative flex w-fit max-w-[90vw] overflow-x-hidden h-full p-3 sm:p-4 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
+        <div className="relative flex w-fit max-w-[90vw] h-full p-3 sm:p-4 gap-3 sm:gap-6 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
             <div className="relative flex overflow-hidden items-center justify-center h-full max-h-full aspect-[16/9] rounded-lg shadow-lg">
                 {images.length > 0 ? (
                     <Image
@@ -48,6 +51,7 @@ export default function NextEpisode({ episode }: Props) {
                     <h2 className="font-semibold text-base sm:text-2xl text-ellipsis whitespace-nowrap overflow-hidden max-w-[12rem] sm:max-w-[20rem]">
                         {title}
                     </h2>
+                    <p className="opacity-60 text-sm sm:text-base !leading-4">Episode {episodeIndex + 1}</p>
                 </div>
 
                 <div className="flex gap-2 sm:gap-3">
@@ -68,6 +72,8 @@ export default function NextEpisode({ episode }: Props) {
                     ))}
                 </div>
             </div>
+
+            <View defaultValue={false} id={`arc-${arcIndex}-ep-${episodeIndex}`} autoReset />
         </div>
     );
 }

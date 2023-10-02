@@ -3,4 +3,5 @@
 ### TODO
 
 -   [ ] Better cards in next episode and arc
--   [ ] Mark next episode and arc as watched
+-   [ ] Don't show tooltips on touch devices
+-   [ ] Improve performance (Parsing data serverside)

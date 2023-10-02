@@ -2,7 +2,8 @@
 import { PropsWithChildren, createContext, useContext, useRef } from 'react';
 
 export enum Event {
-    ON_VIEW = 'ON_VIEW'
+    ON_VIEW = 'ON_VIEW',
+    ON_NEXT_EPISODE_VIEW = 'ON_NEXT_EPISODE_VIEW'
 }
 
 type Props<T> = {};
@@ -21,7 +22,8 @@ export const EventContext = createContext<EventState<any>>({
 
 const EventProvider = <T extends object>({ children }: PropsWithChildren<Props<T>>) => {
     const events = useRef<Record<Event, Callback<T>[]>>({
-        [Event.ON_VIEW]: []
+        [Event.ON_VIEW]: [],
+        [Event.ON_NEXT_EPISODE_VIEW]: []
     });
 
     const sub = (event: Event, callback: Callback<T>) => {

@@ -2,7 +2,7 @@
 
 import { Event, useEvents } from '@/component/Events';
 import { deleteCookie, hasCookie, setCookie } from 'cookies-next';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 
 interface Props {
@@ -10,9 +10,12 @@ interface Props {
     defaultValue: boolean;
     borderReduction?: boolean;
     overrideId?: string;
+    autoReset?: boolean;
 }
 
-const View = ({ id, defaultValue, borderReduction, overrideId }: Props) => {
+const View = ({ id, defaultValue, borderReduction, overrideId, autoReset }: Props) => {
+    const { sub, unsub } = useEvents<string>();
+
     const [viewed, setViewedInternal] = useState(defaultValue);
     const { emit } = useEvents<string>();
 
@@ -21,11 +24,30 @@ const View = ({ id, defaultValue, borderReduction, overrideId }: Props) => {
         if (isOverrideViewed) return;
 
         if (newValue) setCookie(`${id}-viewed`, 'true', { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) });
-        else deleteCookie(`${id}-viewed`);
+        else if (!autoReset) deleteCookie(`${id}-viewed`);
 
-        setViewedInternal(newValue);
+        if (!autoReset) setViewedInternal(newValue);
         emit(Event.ON_VIEW, id);
+
+        if (autoReset) emit(Event.ON_NEXT_EPISODE_VIEW, id);
     };
+
+    const onViewChanged = useCallback(
+        (eventId: string) => {
+            if (id === eventId) setViewedInternal(true);
+        },
+        [id]
+    );
+
+    useEffect(() => {
+        if (autoReset) return;
+
+        sub(Event.ON_NEXT_EPISODE_VIEW, onViewChanged);
+
+        return () => {
+            unsub(Event.ON_NEXT_EPISODE_VIEW, onViewChanged);
+        };
+    }, [autoReset, onViewChanged, sub, unsub]);
 
     return (
         <div
@@ -34,7 +56,7 @@ const View = ({ id, defaultValue, borderReduction, overrideId }: Props) => {
             } ${viewed ? '!bg-opacity-50 dark:!bg-opacity-70' : '!bg-opacity-0'}`}
         >
             <button
-                className="absolute -right-2 -top-2 xl:-right-3 xl:-top-3 z-30 pointer-events-auto w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm"
+                className="absolute -right-3 -top-3 xl:-right-4 xl:-top-4 z-30 pointer-events-auto w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-[0.9rem] cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm"
                 onClick={() => setViewed(!viewed)}
                 type="button"
                 aria-label="Toggle viewed"
