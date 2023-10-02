@@ -53,11 +53,13 @@ export default function Home() {
             <Arcs />
 
             <NextToWatch
+                arcs={arcs}
                 defaultNextArcToWatch={nextArcToWatchIndex}
                 defaultNextEpisodeToWatch={nextEpisodeToWatchIndex}
             />
 
             <Stats
+                arcs={arcs}
                 defaultArcStartPositionInSeconds={arcStartPositionInSeconds}
                 defaultArcFinished={arcFinished}
                 defaultTotalSeconds={totalSeconds}

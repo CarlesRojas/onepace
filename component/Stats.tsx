@@ -1,8 +1,7 @@
 'use client';
 
 import { Event, useEvents } from '@/component/Events';
-import arcsData from '@/data/data.json';
-import { Arc, ArcSchema } from '@/data/schemas';
+import { Arc } from '@/data/schemas';
 import { getDurationInSeconds, getDurationString } from '@/data/utils';
 import { hasCookie } from 'cookies-next';
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
@@ -15,6 +14,7 @@ const TOP: Record<number, string> = {
 };
 
 interface Props {
+    arcs: Arc[];
     defaultArcStartPositionInSeconds: number[];
     defaultArcFinished: boolean[];
     defaultTotalSeconds: number;
@@ -22,14 +22,13 @@ interface Props {
 }
 
 export default function Stats({
+    arcs,
     defaultArcStartPositionInSeconds,
     defaultArcFinished,
     defaultTotalSeconds,
     defaultTotalSecondsWatched
 }: Props) {
     const { sub, unsub } = useEvents<string>();
-
-    const arcs = arcsData.map((arc: any) => ArcSchema.parse(arc) as Arc);
 
     const arcStartPositionInSeconds = useRef<number[]>(defaultArcStartPositionInSeconds);
     const arcFinished = useRef<boolean[]>(defaultArcFinished);

@@ -18,7 +18,6 @@ export default function Arc({ params }: ArcProps) {
 
     const arcs = arcsData.map((arc: any) => ArcSchema.parse(arc) as Arc);
     const arc = arcs[parseInt(index)];
-    const { invariant_title, translations } = arc;
 
     return (
         <>

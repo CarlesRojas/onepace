@@ -3,16 +3,17 @@
 import { Event, useEvents } from '@/component/Events';
 import { default as NextToWatchItem } from '@/component/NextToWatchItem';
 import arcsData from '@/data/data.json';
-import { Arc, ArcSchema, Episode } from '@/data/schemas';
+import { Arc, Episode } from '@/data/schemas';
 import { hasCookie } from 'cookies-next';
 import { useEffect, useState } from 'react';
 
 interface Props {
+    arcs: Arc[];
     defaultNextArcToWatch: Arc | null;
     defaultNextEpisodeToWatch: Episode | null;
 }
 
-export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeToWatch }: Props) {
+export default function NextToWatch({ arcs, defaultNextArcToWatch, defaultNextEpisodeToWatch }: Props) {
     const { sub, unsub } = useEvents<string>();
 
     const [nextArcToWatch, setNextArcToWatch] = useState(defaultNextArcToWatch);
@@ -20,8 +21,6 @@ export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeT
     const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
-        const arcs = arcsData.map((arc: any) => ArcSchema.parse(arc) as Arc);
-
         let newNextArcToWatch: Arc | null = null;
         let newNextEpisodeToWatch: Episode | null = null;
 
@@ -48,7 +47,7 @@ export default function NextToWatch({ defaultNextArcToWatch, defaultNextEpisodeT
             setNextArcToWatch(newNextArcToWatch);
             setNextEpisodeToWatch(newNextEpisodeToWatch);
         }, 0);
-    }, [toggle]);
+    }, [arcs, toggle]);
 
     const onViewChanged = (id: string) => {
         setToggle((prev) => !prev);
