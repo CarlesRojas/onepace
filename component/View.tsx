@@ -3,6 +3,7 @@
 import { Event, useEvents } from '@/component/Events';
 import { deleteCookie, hasCookie, setCookie } from 'cookies-next';
 import { useCallback, useEffect, useState } from 'react';
+import { ImCheckmark } from 'react-icons/im';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 
 interface Props {
@@ -53,10 +54,10 @@ const View = ({ id, defaultValue, borderReduction, overrideId, autoReset }: Prop
         <div
             className={`absolute bg-neutral-50 dark:bg-neutral-950 z-20 top-0 bottom-0 left-0 right-0 rounded-lg pointer-events-none ${
                 borderReduction ? 'm-[3px]' : ''
-            } ${viewed ? '!bg-opacity-50 dark:!bg-opacity-70' : '!bg-opacity-0'}`}
+            } ${viewed ? '!bg-opacity-40 dark:!bg-opacity-60 dark:border-neutral-800 border' : '!bg-opacity-0'}`}
         >
             <button
-                className="absolute -right-3 -top-3 xl:-right-4 xl:-top-4 z-30 pointer-events-auto w-12 h-12 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm"
+                className="group absolute -right-3 -top-3 xl:-right-4 xl:-top-4 z-30 pointer-events-auto w-12 h-12 p-3 cursor-pointer transition-transform outline-none pointer:hover:text-blue-500 pointer:hover:scale-110 pointer:focus-visible:scale-110 pointer:focus-visible:text-blue-500 active:scale-105 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm"
                 onClick={() => setViewed(!viewed)}
                 type="button"
                 aria-label="Toggle viewed"
@@ -65,7 +66,10 @@ const View = ({ id, defaultValue, borderReduction, overrideId, autoReset }: Prop
                 data-tooltip-delay-show={400}
             >
                 {viewed ? (
-                    <RiEyeOffFill className="w-full h-full select-none" />
+                    <>
+                        <ImCheckmark className="w-full h-full select-none text-blue-500 pointer:group-hover:hidden" />
+                        <RiEyeOffFill className="w-full h-full select-none text-blue-500 hidden pointer:group-hover:block" />
+                    </>
                 ) : (
                     <RiEyeFill className="w-full h-full select-none" />
                 )}
