@@ -116,11 +116,14 @@ const HorizontalSlider = ({
         const container = getContainerElement();
         if (!container) return;
 
+        const ammountVisible = shown.filter((elem) => elem).length;
         const viewedValues = getViewedValues(numberOfItems, arcIndex);
         const firstNotWatched = viewedValues.findIndex((elem) => !elem);
-
         if (firstNotWatched === -1) return;
-        const scrollIntoViewId = `${id}-${firstNotWatched}`;
+
+        const scrollToIndex = firstNotWatched - (firstNotWatched > 0 && ammountVisible > 1 ? 1 : 0);
+
+        const scrollIntoViewId = `${id}-${scrollToIndex}`;
         const element = document.getElementById(scrollIntoViewId);
         if (!element) return;
         const bounding = element.getBoundingClientRect();
