@@ -24,7 +24,11 @@ const View = ({ id, defaultValue, borderReduction, overrideId, autoReset }: Prop
         const isOverrideViewed = hasCookie(`${overrideId}-viewed`);
         if (isOverrideViewed) return;
 
-        if (newValue) setCookie(`${id}-viewed`, 'true', { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) });
+        if (newValue)
+            setCookie(`${id}-viewed`, 'true', {
+                expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+                sameSite: 'lax'
+            });
         else if (!autoReset) deleteCookie(`${id}-viewed`);
 
         if (!autoReset) setViewedInternal(newValue);
