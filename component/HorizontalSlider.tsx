@@ -196,7 +196,7 @@ const HorizontalSlider = ({
                                 firstNotWatched >= cleanFirstVisible.current)
                                 ? 'opacity-0 pointer-none select-none'
                                 : ''
-                        } group w-fit h-12 p-3 rounded-full flex items-center justify-center gap-2 outline-none focus:scale-110 hover:scale-110 active:scale-105 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
+                        } group relative w-fit max-w-[5rem] h-12 p-3 rounded-full flex items-center justify-center gap-2 outline-none focus:scale-110 hover:scale-110 active:scale-105 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black !bg-opacity-80 backdrop-blur-md shadow-sm`}
                         onClick={() => goFirstNotWatched()}
                         type="button"
                         disabled={firstNotWatchedVisible}
@@ -221,7 +221,7 @@ const HorizontalSlider = ({
                     </button>
 
                     <div
-                        className={`flex-1 ${
+                        className={`flex-grow ${
                             firstNotWatchedVisible || firstNotWatched >= cleanLastVisible.current ? 'hidden' : ''
                         }`}
                     />

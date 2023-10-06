@@ -38,7 +38,7 @@ export default function NextToWatchItem({
     const scale = type === 'Arc' ? 'scale-[1.2] -mt-[25%]' : '';
 
     return (
-        <div className="relative flex w-full h-full p-3 gap-3 sm:gap-6 rounded-2xl bg-neutral-150 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
+        <div className="relative flex w-full h-it p-3 gap-3 sm:gap-6 rounded-2xl bg-neutral-150 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600">
             <div className="relative h-[9rem] min-h-[9rem] w-[8.5rem] min-w-[8.5rem] 2xl:h-[10rem] 2xl:min-h-[10rem] 2xl:w-[9.25rem] 2xl:min-w-[9.25rem] flex overflow-hidden items-center justify-center rounded-lg shadow-lg">
                 {image ? (
                     <Image
