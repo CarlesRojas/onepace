@@ -12,15 +12,18 @@ interface Props {
     borderReduction?: boolean;
     overrideId?: string;
     autoReset?: boolean;
+    onClick?: () => void;
 }
 
-const View = ({ id, defaultValue, borderReduction, overrideId, autoReset }: Props) => {
+const View = ({ id, defaultValue, borderReduction, overrideId, autoReset, onClick }: Props) => {
     const { sub, unsub } = useEvents<string>();
 
     const [viewed, setViewedInternal] = useState(defaultValue);
     const { emit } = useEvents<string>();
 
     const setViewed = (newValue: boolean) => {
+        if (onClick) onClick();
+
         const isOverrideViewed = hasCookie(`${overrideId}-viewed`);
         if (isOverrideViewed) return;
 

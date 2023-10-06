@@ -5,8 +5,7 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'neutral-925': '#111111',
-                'neutral-150': '#EDEDED'
+                'neutral-925': '#111111'
             },
 
             gridTemplateAreas: {
@@ -23,11 +22,11 @@ const config: Config = {
             keyframes: {
                 skeketon: {
                     '0%': { backgroundColor: '#f5f5f5' },
-                    '100%': { backgroundColor: '#e5e5e5' }
+                    '100%': { backgroundColor: '#EDEDED' }
                 },
                 skeketonDark: {
                     '0%': { backgroundColor: '#171717' },
-                    '100%': { backgroundColor: '#262626' }
+                    '100%': { backgroundColor: '#1F1F1F' }
                 }
             },
 
