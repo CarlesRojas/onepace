@@ -1,5 +1,1 @@
-# One Pace
-
-### TODO
-
--   [ ] About page
+# One Pace Clone
